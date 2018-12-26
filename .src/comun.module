@@ -1,0 +1,71 @@
+' Gambas module file
+
+Public Function contiene(texto As String, textoabuscar As String) As Boolean '' devuelve verdadero o falso si un texto contiene textoabuscar
+
+    If String.InStr(texto, textoabuscar) <> 0 Then
+        Return True
+    Else
+        Return False
+    Endif
+
+End
+
+Public Function BorraLinea(lineas As String[], l As String) '''borra una linea del array Lineas que sea igual a la dada "l"
+
+    Dim a As Integer
+
+    For a = 0 To lineas.count - 1
+        If lineas[a] = l Then
+            lineas.Delete(a)
+            Return
+        Endif
+    Next
+
+End
+
+Public Function valorar(l As String) As Float ''quita espacio, signo de moneda y convierte de punto a coma el texto dado para devolver un numero
+
+    l = Replace(l, " ", "")
+    l = Replace(l, "€", "")
+    l = Replace(l, ".", ",")
+
+    Return Val(l)
+
+End
+
+Public Function similar(casa As String) As String
+
+    If casa = "" Then Message.Info("Error: falta definir casa de apuesta")
+
+    If contiene(casa, "f") Then Return "paf"
+
+    If contiene(casa, "co") Then Return "codere"
+
+    If contiene(casa, "ci") Then Return "circus"
+    If contiene(casa, "cu") Then Return "circus"
+
+    If contiene(casa, "go") Then Return "goldenpark"
+
+    If contiene(casa, "8") Then Return "888"
+
+    If contiene(casa, "bw") Then Return "bwin"
+
+    If contiene(casa, "wi") Then Return "williamhill"
+    If contiene(casa, "wa") Then Return "wanabet"
+
+    If contiene(casa, "lu") Then Return "luckia"
+    If contiene(casa, "ck") Then Return "luckia"
+
+    If contiene(casa, "sp") Then Return "sportium"
+
+    If contiene(casa, "mb") Then Return "mbet"
+
+    If contiene(casa, "3") Then Return "bet365"
+    If contiene(casa, "6") Then Return "bet365"
+    If contiene(casa, "5") Then Return "bet365"
+
+    If contiene(casa, "st") Then Return "betstars"
+
+    Return casa
+
+End

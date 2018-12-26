@@ -1,0 +1,152 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,86,79)
+  Text = ("Traductor a Balance")
+  Icon = Picture["balanza.jpg"]
+  { TextAreaBalance TextArea
+    MoveScaled(2,48,69,26)
+  }
+  { ButtonCopiaralPortapapeles Button
+    MoveScaled(73,66,9,7)
+    Picture = Picture["icon:/16/copy"]
+  }
+  { ButtonLimpiar Button
+    MoveScaled(73,54,9,7)
+    Picture = Picture["icon:/16/clear"]
+  }
+  { LabelComentarios Label
+    MoveScaled(3,75,64,3)
+    Text = ("Comentarios.") & "..."
+  }
+  { TabStrip1 TabStrip
+    MoveScaled(2,1,84,43)
+    Count = 2
+    Index = 0
+    Text = ("Apuesta")
+    { TextAreaApuesta TextArea
+      MoveScaled(0,11,80,15)
+      Background = &HBFBFBF&
+      ReadOnly = True
+      Wrap = True
+    }
+    { ButtonTraducir Button
+      MoveScaled(68,30,12,5)
+      Text = ("Traducir")
+      Picture = Picture["icon:/16/exec"]
+    }
+    { Frame1 Frame
+      MoveScaled(26,0,36,7)
+      Enabled = False
+      Text = ("Tipo")
+      { RadioButtonFree RadioButton
+        MoveScaled(20,2,16,5)
+        Text = ("Freebet")
+      }
+      { RadioButtonNormal RadioButton
+        MoveScaled(0,2,19,5)
+        Text = ("Normal")
+        Value = True
+      }
+    }
+    { Frame2 Frame
+      MoveScaled(0,26,60,9)
+      Enabled = False
+      Text = ("Estado")
+      { RadioButtonPrepartido RadioButton
+        MoveScaled(21,3,20,6)
+        Text = ("Prepartido")
+        Value = True
+      }
+      { RadioButtonResuelta RadioButton
+        MoveScaled(44,3,20,6)
+        Text = ("Resuelta")
+      }
+    }
+    { ButtonPegar Button
+      MoveScaled(62,1,8,6)
+      Picture = Picture["icon:/16/paste"]
+    }
+    { Label1 Label
+      MoveScaled(0,7,80,4)
+      Font = Font["+1"]
+      Text = ("Casa | Mercado | Cantidad | cuota | premio | beneficio | resultado\n")
+      Alignment = Align.TopNormal
+    }
+    { PanelIdApuesta Panel
+      MoveScaled(0,0,24,7)
+      Border = Border.Plain
+      { TextBoxId TextBox
+        MoveScaled(9,3,11,4)
+      }
+      { TextLabel1 TextLabel
+        MoveScaled(0,0,11,3)
+        Text = ("Id Apuesta:")
+      }
+      { ButtonPegaId Button
+        MoveScaled(20,3,4,4)
+        Picture = Picture["icon:/16/paste"]
+      }
+      { ButtonDecena Button
+        MoveScaled(1,3,4,4)
+        Text = ("00")
+      }
+      { ButtonUnidad Button
+        MoveScaled(5,3,4,4)
+        Text = ("0")
+      }
+    }
+    { TextLabel5 TextLabel
+      MoveScaled(2,35,72,3)
+      Text = ("Nota: en la columna de resultado el signo ← indica que apuesta gano.")
+    }
+    { ButtonLimpiarInicio Button
+      MoveScaled(74,1,8,6)
+      Picture = Picture["icon:/16/clear"]
+    }
+    Index = 1
+    Text = ("Transferencia")
+    { ValueBox1 ValueBox
+      MoveScaled(33,29,13,6)
+    }
+    { ButtonRealizarTransferencia Button
+      MoveScaled(62,28,18,7)
+      Text = ("Transferencia")
+      Picture = Picture["icon:/16/apply"]
+    }
+    { TextLabel2 TextLabel
+      MoveScaled(15,30,16,4)
+      Text = ("Cantidad:")
+      Alignment = Align.Right
+    }
+    { TextLabel3 TextLabel
+      MoveScaled(1,4,10,4)
+      Text = ("Desde:")
+      Alignment = Align.Center
+    }
+    { TextLabel4 TextLabel
+      MoveScaled(42,3,6,4)
+      Text = ("A:")
+      Alignment = Align.Center
+    }
+    { ComboBoxDE ComboBox
+      MoveScaled(11,3,26,4)
+    }
+    { ComboBoxA ComboBox
+      MoveScaled(50,3,25,4)
+    }
+    Index = 0
+  }
+  { ButtonEstructuraFreebet Button
+    MoveScaled(67,75,9,3)
+    Font = Font["-4"]
+    ToolTip = ("Est.Freebet")
+    Text = ("Est.Freebet")
+  }
+  { ButtonEstructuraFreebet2 Button
+    MoveScaled(77,75,9,3)
+    Font = Font["-4"]
+    ToolTip = ("Est.Normal")
+    Text = ("Est.Normal")
+  }
+}

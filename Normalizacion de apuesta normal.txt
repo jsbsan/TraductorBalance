@@ -1,0 +1,16 @@
+normalizacion de balance
+betstar	denver nuggts	30	1,5	45	-0,306122448979591	←
+w+c	dallas mavericks	15,3061224489796	2,94	45		
+						
+NORMALIZACION DE BALANCE						
+1º estapa: prevision de apuesta (no sabemos quien gana, y se aloja dinero en  “en juego” y en “zz Beneficio bruto”)						
+00 004	18/12/18	zen juego betstar	30,00 €			
+00 004	18/12/18	betstars	-30,00 €			
+00 004	18/12/18	zen juego williamhill	15,33 €			
+00 004	18/12/18	williamhill	-15,33 €			
+00 004	18/12/18	Zz beneficio bruto	-0,31 €			
+2º estapa: resolucion apuesta, ya sabemos donde ganamos y se asinga correctamente los premios y descuenta los zz.benefico y zen juego)						
+00 004	18/12/18	zen juego betstar	-30,00 €			
+00 004	18/12/18	zen juego williamhill	-15,33 €			
+00 004	18/12/18	betstars	45,00 €			
+00 004	18/12/18	Zz beneficio bruto	0,31 €			

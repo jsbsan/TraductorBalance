@@ -1,0 +1,388 @@
+' Gambas class file
+
+Public decena As Integer = 1
+Public listaApuesta As New DatoApuesta[]
+Public Dtmp As New DatoApuesta
+Public datoBeneficio As Float
+
+Public Sub ButtonPegar_Click()
+
+    Dim a As Integer
+    Dim l As String
+    Dim lineas As String[]
+    Dim lineascopia As New String[]
+
+    listaApuesta.Clear()
+    TextAreaApuesta.text = Clipboard.Paste()
+
+    'si contiene el signo ← se trata de una apuesta resuelta
+
+    If comun.contiene(TextAreaApuesta.text, "←") Then
+        RadioButtonResuelta.value = True
+    Else
+        RadioButtonPrepartido.value = True
+    Endif
+
+    'borrar lineas en blanco
+    lineas = Split(TextAreaApuesta.text, "\n")
+
+    'copio las lineas
+    For a = 0 To lineas.Max
+        lineascopia.add(lineas[a])
+    Next
+
+    For Each l In lineas
+        If Replace(l, "\t", "") = "" Then comun.BorraLinea(lineascopia, l)
+    Next
+
+    TextAreaApuesta.text = lineascopia.Join("\n")
+
+    'procesar información
+    procesar(TextAreaApuesta.text)
+
+End
+
+Public Sub procesar(texto As String)
+
+    Dim larray As String[]
+    Dim l As String
+    Dim palabras As String[]
+    Dim premio As Float
+    Dim beneficio As Float
+    Dim contador As Integer
+
+    If texto = "" Then Return
+
+    'obtener datos de las lienas
+    larray = Split(texto, "\n")
+
+    'determinar si se encuentra en una freebet en la 1º linea
+    palabras = Split(larray[0], "\t")
+
+    If palabras.count = 7 Or palabras.count = 6 Then
+        LabelComentarios.text = "Comentarios..."
+
+    Else
+
+        'faltan columnas
+        LabelComentarios.text = "Error: Faltan columnas de datos, deben de haber 6 o 7 columnas"
+        Return
+    Endif
+
+    Try premio = comun.valorar(palabras[4])
+
+    If Error Then
+        'no es una linea de apuesta con premio
+        LabelComentarios.text = "Error: la primera linea no contiene datos de apuesta reconocible, deben de haber 6 o 7 columnas"
+        Return
+    Endif
+
+    LabelComentarios.text = "Comentarios..."
+
+    If comun.valorar(palabras[2]) * comun.valorar(palabras[3]) = premio Then
+        'se trata de una apuesta normal
+        RadioButtonNormal.value = True
+    Else
+        RadioButtonFree.Value = True
+
+    Endif
+
+    ''apuesta
+    '
+    ' Dtmp.casa = palabras[0]
+    ' Dtmp.mercado = palabras[1]
+    ' Dtmp.importe = comun.valorar(palabras[2])
+    ' Dtmp.cuota = comun.valorar(palabras[3])
+    ' Dtmp.premio = comun.valorar(palabras[4])
+    ' dtmp.resuelta = IIf(RadioButtonResuelta.value, True, False)
+    ' dtmp.tipo = IIf(RadioButtonFree.value, "gratis", "normal")
+
+    ' listaApuesta.Add(dtmp)
+    dtmp = New DatoApuesta
+
+    ''leer datos
+    contador = 0
+    For Each l In larray
+        contador += 1
+        palabras = Split(l, "\t")
+        Dtmp.casa = comun.similar(palabras[0])
+        Dtmp.mercado = palabras[1]
+        Dtmp.importe = comun.valorar(palabras[2])
+        Dtmp.cuota = comun.valorar(palabras[3])
+        Dtmp.premio = comun.valorar(palabras[4])
+        dtmp.resuelta = IIf(RadioButtonResuelta.value, True, False)
+
+        If contador = 1 Then
+            'la prmera apuesta es la que pongo siempre el freebet
+
+            dtmp.tipo = IIf(RadioButtonFree.value, "gratis", "normal")
+            datoBeneficio = comun.valorar(palabras[5]) 'la priemra apueta tiene el beneficio
+        Else
+            dtmp.tipo = "normal"
+        Endif
+
+        If palabras[5] <> "" Then
+            Try beneficio = IIf(comun.valorar(palabras[5]) = 0, 0, comun.valorar(palabras[5]))
+        Endif
+
+        If Error Then
+            'no hay datos
+        Else
+
+            If RadioButtonResuelta.value = True And If comun.contiene(palabras[6], "←") Then
+                dtmp.beneficio = beneficio 'tiene la fecha y se le asigna el beneficio
+            Endif
+        Endif
+
+        listaApuesta.Add(dtmp)
+        dtmp = New DatoApuesta
+
+    Next
+
+End
+
+Public Sub ButtonPegaId_Click()
+
+    TextBoxId.text = Clipboard.Paste()
+
+End
+
+Public Sub ButtonTraducir_Click()
+
+    Dim dtmp As DatoApuesta
+
+    TextAreaBalance.text = ""
+    If TextBoxId.text = "" Then
+        TextBoxId.text = ButtonDecena.text & ButtonUnidad.Text
+    Endif
+    'traduccion
+
+    If RadioButtonNormal.value = True And RadioButtonPrepartido.value = True Then
+
+        For Each dtmp In listaApuesta
+            TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+            TextAreaBalance.text &= dtmp.casa & "\t"
+            TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+
+            TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+            TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
+            TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "\n"
+            'añadir apunte Zz beneficio
+        Next
+
+        TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= "Zz beneficio" & "\t"
+        TextAreaBalance.text &= Str$(datoBeneficio) & "\n"
+
+    Endif
+
+    If RadioButtonNormal.value = True And RadioButtonResuelta.value = True Then
+        For Each dtmp In listaApuesta
+            TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+
+            TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
+            TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+
+            'añadir apunte Zz beneficio
+            If dtmp.beneficio <> 0 Then
+
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= dtmp.casa & "\t"
+                TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
+
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= "Zz beneficio" & "\t"
+                TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+
+            Endif
+
+        Next
+    Endif
+
+    If RadioButtonFree.value = True And RadioButtonPrepartido.value = True Then
+        'apuesta gratis, prepartido..
+
+        For Each dtmp In listaApuesta
+            If dtmp.tipo = "normal" Then
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= dtmp.casa & "\t"
+                TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
+                TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "\n"
+                'añadir apunte Zz beneficio
+                ' If dtmp.beneficio <> 0 Then
+                '     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                '     TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                '     TextAreaBalance.text &= "Zz beneficio" & "\t"
+                '     TextAreaBalance.text &= Str$(datoBeneficio) & "\n"
+                ' Endif
+            Else
+                'tipo freebet
+                'no pongo nada (tengo jugado freebet pero sin ningun valor)
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= dtmp.casa & "\t"
+                TextAreaBalance.text &= Str$(0) & "\t" & dtmp.mercado & " (freebet)" & "\n"
+
+            Endif
+
+        Next
+
+        TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= "Zz beneficio" & "\t"
+        TextAreaBalance.text &= Str$(datoBeneficio) & "\n"
+
+    Endif
+
+    If RadioButtonNormal.value = False And RadioButtonResuelta.value = True Then
+        'apuesta gratis resuelta
+
+        For Each dtmp In listaApuesta
+            If dtmp.tipo <> "gratis" Then
+                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+
+                TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
+                TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+
+                'añadir apunte Zz beneficio
+                If dtmp.beneficio <> 0 Then
+                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= dtmp.casa & "\t"
+                    TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
+
+                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= "Zz beneficio" & "\t"
+                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+
+                Endif
+
+            Else
+                If dtmp.beneficio <> 0 Then
+                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= dtmp.casa & "\t"
+                    TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
+                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= "Zz beneficio" & "\t"
+                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+
+                Endif
+            Endif
+
+        Next
+    Endif
+
+End
+
+Public Sub Form_Open()
+
+    ComboBoxA.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+
+    ComboBoxDE.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+
+    Me.Title = "Traductor a Balance vesion " & Application.Version
+
+End
+
+Public Sub ButtonCopiaralPortapapeles_Click()
+
+    Clipboard.Copy(TextAreaBalance.text)
+
+End
+
+Public Sub ButtonLimpiar_Click()
+
+    TextAreaBalance.text = ""
+
+End
+
+Public Sub TabStrip1_Click()
+
+End
+
+Public Sub ButtonRealizarTransferencia_Click()
+
+    TextAreaBalance.text = ""
+    TextAreaBalance.text &= "\t"
+    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+    TextAreaBalance.text &= ComboBoxDE.text & "\t"
+    TextAreaBalance.text &= Str$(- ValueBox1.value) & "\n"
+
+    TextAreaBalance.text &= "\t"
+    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+    TextAreaBalance.text &= ComboBoxA.text & "\t"
+    TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
+
+End
+
+Public Sub ButtonEstructuraFreebet_Click()
+
+    Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
+
+End
+
+Public Sub ButtonEstructuraFreebet2_Click()
+
+    Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
+
+End
+
+Public Sub ButtonLimpiarInicio_Click()
+
+    TextAreaApuesta.text = ""
+    listaApuesta = New DatoApuesta[]
+    Dtmp = New DatoApuesta
+    datoBeneficio = 0
+    TextAreaBalance.text = ""
+    TextBoxId.text = ""
+
+End
+
+Public Sub ButtonDecena_MouseWheel()
+
+    ButtonDecena.text = Str$(Val(ButtonDecena.text) + Mouse.delta)
+
+End
+
+Public Sub ButtonUnidad_MouseWheel()
+
+    ButtonUnidad.text = Str$(Val(ButtonUnidad.text) + Mouse.delta)
+
+End
+
+Public Sub ButtonDecena_MouseUp()
+
+    If Mouse.Left Then
+        ButtonDecena.text = Str$(Val(ButtonDecena.text) + 1)
+    Else
+        ButtonDecena.text = Str$(Val(ButtonDecena.text) - 1)
+        If Val(ButtonDecena.text) < 0 Then ButtonDecena.text = "0"
+    Endif
+
+End
+
+Public Sub ButtonUnidad_MouseUp()
+
+    If Mouse.Left Then
+        ButtonUnidad.text = Str$(Val(ButtonUnidad.text) + 1)
+    Else
+        ButtonUnidad.text = Str$(Val(ButtonUnidad.text) - 1)
+        If Val(ButtonUnidad.text) < 0 Then ButtonUnidad.text = "0"
+    Endif
+
+End
