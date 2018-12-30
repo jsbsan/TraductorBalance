@@ -153,7 +153,7 @@ Public Sub ButtonTraducir_Click()
 
     TextAreaBalance.text = ""
     If TextBoxId.text = "" Then
-        TextBoxId.text = ButtonDecena.text & ButtonUnidad.Text
+        TextBoxId.text = Buttoncentena.text & ButtonDecena.text & ButtonUnidad.Text
     Endif
     'traduccion
 
@@ -353,36 +353,26 @@ Public Sub ButtonLimpiarInicio_Click()
 
 End
 
-Public Sub ButtonDecena_MouseWheel()
+Public Sub cifras_MouseUp()
+    'hacer click izquierdo aumenta un valor hasta llegar al 9 al siguiente cambia a 0
 
-    ButtonDecena.text = Str$(Val(ButtonDecena.text) + Mouse.delta)
+    If Mouse.left Then
+        If Val(Last.text) > 8 Then
+            Last.text = "0"
+        Else
 
-End
-
-Public Sub ButtonUnidad_MouseWheel()
-
-    ButtonUnidad.text = Str$(Val(ButtonUnidad.text) + Mouse.delta)
-
-End
-
-Public Sub ButtonDecena_MouseUp()
-
-    If Mouse.Left Then
-        ButtonDecena.text = Str$(Val(ButtonDecena.text) + 1)
-    Else
-        ButtonDecena.text = Str$(Val(ButtonDecena.text) - 1)
-        If Val(ButtonDecena.text) < 0 Then ButtonDecena.text = "0"
+            Last.text = Str$(Val(Last.text) + 1)
+        Endif
     Endif
 
-End
+    'hacer click derecho disminuye el valor hasta llegar al 0 al siguiente pasa al 9
+    If Mouse.Right Then
+        If Val(Last.text) > 0 Then
+            Last.text = Str$(Val(Last.text) - 1)
+        Else
+            Last.text = Str$(9)
 
-Public Sub ButtonUnidad_MouseUp()
-
-    If Mouse.Left Then
-        ButtonUnidad.text = Str$(Val(ButtonUnidad.text) + 1)
-    Else
-        ButtonUnidad.text = Str$(Val(ButtonUnidad.text) - 1)
-        If Val(ButtonUnidad.text) < 0 Then ButtonUnidad.text = "0"
+        Endif
     Endif
 
 End
