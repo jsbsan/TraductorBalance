@@ -291,9 +291,9 @@ End
 
 Public Sub Form_Open()
 
-    ComboBoxA.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+    ComboBoxA.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
 
-    ComboBoxDE.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+    ComboBoxDE.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
 
     Me.Title = "Traductor a Balance vesion " & Application.Version
 
@@ -318,15 +318,20 @@ End
 Public Sub ButtonRealizarTransferencia_Click()
 
     TextAreaBalance.text = ""
-    TextAreaBalance.text &= "\t"
-    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
-    TextAreaBalance.text &= ComboBoxDE.text & "\t"
-    TextAreaBalance.text &= Str$(- ValueBox1.value) & "\n"
 
-    TextAreaBalance.text &= "\t"
-    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
-    TextAreaBalance.text &= ComboBoxA.text & "\t"
-    TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
+    If Not ComboBoxDE.text = "" Then
+        TextAreaBalance.text &= "\t"
+        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= ComboBoxDE.text & "\t"
+        TextAreaBalance.text &= Str$(- ValueBox1.value) & "\n"
+    Endif
+
+    If Not ComboBoxA.text = "" Then
+        TextAreaBalance.text &= "\t"
+        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= ComboBoxA.text & "\t"
+        TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
+    Endif
 
 End
 

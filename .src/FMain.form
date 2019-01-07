@@ -2,6 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,86,79)
+  Background = &H77C0AD&
   Text = ("Traductor a Balance")
   Icon = Picture["balanza.jpg"]
   { TextAreaBalance TextArea
