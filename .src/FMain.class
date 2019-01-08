@@ -150,6 +150,7 @@ End
 Public Sub ButtonTraducir_Click()
 
     Dim dtmp As DatoApuesta
+    Dim ZZBeneficio As Boolean = False
 
     TextAreaBalance.text = ""
     If TextBoxId.text = "" Then
@@ -195,10 +196,14 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
 
-                TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
-                TextAreaBalance.text &= "Zz beneficio" & "\t"
-                TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                If ZZBeneficio = False Then
+                    'solo pone la resta del beneficio una vez...
+                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= "Zz beneficio" & "\t"
+                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                    ZZbeneficio = True
+                Endif
 
             Endif
 
@@ -277,10 +282,14 @@ Public Sub ButtonTraducir_Click()
                     TextAreaBalance.text &= dtmp.casa & "\t"
                     TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
-                    TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
 
+                    If ZZBeneficio = False Then
+                        'solo pone la resta del beneficio una vez...
+
+                        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                        TextAreaBalance.text &= "Zz beneficio" & "\t"
+                        TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                    Endif
                 Endif
             Endif
 
