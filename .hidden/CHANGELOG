@@ -1,3 +1,6 @@
+* Tue Jan 08 2019 mint <mint@mint-SSD> 0.0.8
+- mejora al redondear los calculos por si viene con 3 decimales y ahora indica el valor de la apuesta gratuita como comentario
+
 * Mon Jan 07 2019 mint <mint@mint-SSD> 0.0.7
 - añadido otra fuente de ingresos y si es solo saldo en transferencia
 

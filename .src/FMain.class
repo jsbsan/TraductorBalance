@@ -79,7 +79,7 @@ Public Sub procesar(texto As String)
 
     LabelComentarios.text = "Comentarios..."
 
-    If comun.valorar(palabras[2]) * comun.valorar(palabras[3]) = premio Then
+    If Round((comun.valorar(palabras[2]) * comun.valorar(palabras[3])) * 100, -2) / 100 = Round(premio * 100, -2) / 100 Then
         'se trata de una apuesta normal
         RadioButtonNormal.value = True
     Else
@@ -232,7 +232,7 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                 TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= dtmp.casa & "\t"
-                TextAreaBalance.text &= Str$(0) & "\t" & dtmp.mercado & " (freebet)" & "\n"
+                TextAreaBalance.text &= Str$(0) & "\t" & dtmp.mercado & " (freebet de valor " & Str$(dtmp.importe) & "€)" & "\n"
 
             Endif
 
