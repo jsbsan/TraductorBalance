@@ -25,10 +25,16 @@ End
 
 Public Function valorar(l As String) As Float ''quita espacio, signo de moneda y convierte de punto a coma el texto dado para devolver un numero
 
+    Dim valor As Float
+
     l = Replace(l, " ", "")
     l = Replace(l, "€", "")
     l = Replace(l, ".", ",")
+    Try valor = Val(l) 'prueba por si hay un error
+    If Error Then
 
+        Return 0
+    Endif
     Return Val(l)
 
 End

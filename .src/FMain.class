@@ -61,11 +61,13 @@ Public Sub procesar(texto As String)
 
     If palabras.count = 7 Or palabras.count = 6 Then
         LabelComentarios.text = "Comentarios..."
-
+        LabelComentarios.Background = Color.White
     Else
 
         'faltan columnas
         LabelComentarios.text = "Error: Faltan columnas de datos, deben de haber 6 o 7 columnas"
+        LabelComentarios.Background = Color.Yellow
+
         Return
     Endif
 
@@ -78,8 +80,10 @@ Public Sub procesar(texto As String)
     Endif
 
     LabelComentarios.text = "Comentarios..."
+    'nota añado un rango para tene encuenta decimales
+    'rango admisible un 2%
 
-    If Round((comun.valorar(palabras[2]) * comun.valorar(palabras[3])) * 100, -2) / 100 = Round(premio * 100, -2) / 100 Then
+    If (Round((comun.valorar(palabras[2]) * comun.valorar(palabras[3])) * 100, -2) / 100 >= Round(premio * 100, -2) / 100 - 0.02 * (comun.valorar(palabras[2]))) And (Round((comun.valorar(palabras[2]) * comun.valorar(palabras[3])) * 100, -2) / 100 <= Round(premio * 100, -2) / 100 + 0.02 * (comun.valorar(palabras[2]))) Then
         'se trata de una apuesta normal
         RadioButtonNormal.value = True
     Else
