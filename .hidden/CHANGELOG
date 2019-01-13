@@ -1,3 +1,6 @@
+* Fri Jan 11 2019 mint <mint@mint-SSD> 0.0.12
+- normaliza nombre de la casa a todo minuscula.
+
 * Wed Jan 09 2019 mint <mint@mint-SSD> 0.0.11
 - admite un intervalo por is hay varios decimales en las cuotas para saber si es freebet o apuesta normal
 

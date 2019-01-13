@@ -39,6 +39,7 @@ Public Sub ButtonPegar_Click()
 
     'procesar información
     procesar(TextAreaApuesta.text)
+    TextAreaBalance.text = ""
 
 End
 
