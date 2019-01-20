@@ -181,7 +181,7 @@ Public Sub ButtonTraducir_Click()
         TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= "Zz beneficio" & "\t"
-        TextAreaBalance.text &= Str$(datoBeneficio) & "\n"
+        TextAreaBalance.text &= Str$(datoBeneficio) & "\t" & "enjuego" & "\n"
 
     Endif
 
@@ -206,7 +206,7 @@ Public Sub ButtonTraducir_Click()
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
                     ZZbeneficio = True
                 Endif
 
@@ -251,7 +251,7 @@ Public Sub ButtonTraducir_Click()
         TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= "Zz beneficio" & "\t"
-        TextAreaBalance.text &= Str$(datoBeneficio) & "\n"
+        TextAreaBalance.text &= Str$(datoBeneficio) & "\t" & "enjuego" & "\n"
 
     Endif
 
@@ -276,7 +276,7 @@ Public Sub ButtonTraducir_Click()
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
 
                 Endif
 
@@ -293,7 +293,7 @@ Public Sub ButtonTraducir_Click()
 
                         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
                         TextAreaBalance.text &= "Zz beneficio" & "\t"
-                        TextAreaBalance.text &= Str$(- datoBeneficio) & "\n"
+                        TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
                     Endif
                 Endif
             Endif
