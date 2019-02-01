@@ -395,3 +395,6 @@ Public Sub cifras_MouseUp()
     Endif
 
 End
+''TODO: POR HACER
+''NOTE: COMENTARIOS
+''FIXME: ARREGLAME

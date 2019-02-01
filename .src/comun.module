@@ -60,6 +60,8 @@ Public Function similar(casa As String) As String
 
     If contiene(casa, "wi") Then Return "williamhill"
     If contiene(casa, "w+c") Then Return "williamhill"
+    If contiene(casa, "w.c") Then Return "williamhill"
+    If contiene(casa, "wc") Then Return "williamhill"
 
     If contiene(casa, "wa") Then Return "wanabet"
 
