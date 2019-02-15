@@ -174,7 +174,7 @@ Public Sub ButtonTraducir_Click()
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
             TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
             TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
-            TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "\n"
+            TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "|" & Str$(DateBoxFechaHora.Value) & "\n"
             'añadir apunte Zz beneficio
         Next
 
@@ -228,7 +228,7 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                 TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
-                TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "\n"
+                TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "|" & Str$(DateBoxFechaHora.Value) & "\n"
                 'añadir apunte Zz beneficio
                 ' If dtmp.beneficio <> 0 Then
                 '     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"

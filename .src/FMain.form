@@ -37,15 +37,15 @@
       Picture = Picture["icon:/16/exec"]
     }
     { Frame1 Frame
-      MoveScaled(26,0,36,7)
+      MoveScaled(25,0,36,7)
       Enabled = False
       Text = ("Tipo")
       { RadioButtonFree RadioButton
-        MoveScaled(20,2,16,5)
+        MoveScaled(5,4,11,3)
         Text = ("Freebet")
       }
       { RadioButtonNormal RadioButton
-        MoveScaled(0,2,19,5)
+        MoveScaled(5,0,10,3)
         Text = ("Normal")
         Value = True
       }
@@ -111,6 +111,10 @@
     { ButtonLimpiarInicio Button
       MoveScaled(74,1,8,6)
       Picture = Picture["icon:/16/clear"]
+    }
+    { DateBoxFechaHora DateBox
+      MoveScaled(42,2,18,4)
+      Mode = DateChooser.DateTime
     }
     Index = 1
     Text = ("Transferencia")
