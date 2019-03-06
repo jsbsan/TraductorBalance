@@ -41,6 +41,12 @@ Public Sub ButtonPegar_Click()
     procesar(TextAreaApuesta.text)
     TextAreaBalance.text = ""
 
+    'pulsar al boton de traducir
+    ButtonTraducir_Click()
+
+    'pulsar el boton de copiar al portapapeles
+    ButtonCopiaralPortapapeles_Click()
+
 End
 
 Public Sub procesar(texto As String)
