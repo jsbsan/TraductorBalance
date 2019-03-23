@@ -4,6 +4,7 @@ Public decena As Integer = 1
 Public listaApuesta As New DatoApuesta[]
 Public Dtmp As New DatoApuesta
 Public datoBeneficio As Float
+Public traduccionErronea As Boolean = False
 
 Public Sub ButtonPegar_Click()
 
@@ -11,6 +12,11 @@ Public Sub ButtonPegar_Click()
     Dim l As String
     Dim lineas As String[]
     Dim lineascopia As New String[]
+
+    'activo boton secundario para pegar contenido original
+
+    ButtonPegar2.tag = Clipboard.Paste()
+    ButtonPegar2.enabled = True
 
     listaApuesta.Clear()
     TextAreaApuesta.text = Clipboard.Paste()
@@ -44,8 +50,12 @@ Public Sub ButtonPegar_Click()
     'pulsar al boton de traducir
     ButtonTraducir_Click()
 
-    'pulsar el boton de copiar al portapapeles
-    ButtonCopiaralPortapapeles_Click()
+    'si no hay error lo copia al portapapeles
+
+    If TraduccionErronea = False Then
+        'pulsar el boton de copiar al portapapeles
+        ButtonCopiaralPortapapeles_Click()
+    Endif
 
 End
 
@@ -67,26 +77,32 @@ Public Sub procesar(texto As String)
     palabras = Split(larray[0], "\t")
 
     If palabras.count = 7 Or palabras.count = 6 Then
-        LabelComentarios.text = "Comentarios..."
+        LabelComentarios.text = "Comentarios sobre traducción..."
         LabelComentarios.Background = Color.White
     Else
 
+        'indico que se ha producido un error
         'faltan columnas
         LabelComentarios.text = "Error: Faltan columnas de datos, deben de haber 6 o 7 columnas"
         LabelComentarios.Background = Color.Yellow
 
+        traduccionErronea = True
         Return
     Endif
 
     Try premio = comun.valorar(palabras[4])
 
     If Error Then
+        'indico que se ha producido un error
+
         'no es una linea de apuesta con premio
         LabelComentarios.text = "Error: la primera linea no contiene datos de apuesta reconocible, deben de haber 6 o 7 columnas"
+        traduccionErronea = True
+
         Return
     Endif
 
-    LabelComentarios.text = "Comentarios..."
+    LabelComentarios.text = "Comentarios sobre traducción..."
     'nota añado un rango para tene encuenta decimales
     'rango admisible un 2%
 
@@ -150,11 +166,15 @@ Public Sub procesar(texto As String)
 
     Next
 
+    'no ha habido ningun error de traduccion
+    TraduccionErronea = False
+
 End
 
 Public Sub ButtonPegaId_Click()
+    'solo copia los 7 primeros caracteres, para evitar errores de pegar otras cosas que no sean el id de identificacion
 
-    TextBoxId.text = Clipboard.Paste()
+    TextBoxId.text = Mid$(Clipboard.Paste(), 1, 7)
 
 End
 
@@ -163,9 +183,20 @@ Public Sub ButtonTraducir_Click()
     Dim dtmp As DatoApuesta
     Dim ZZBeneficio As Boolean = False
 
+    'limpio texto traducido y lo dejo en blanco
+
     TextAreaBalance.text = ""
+
+    If TextBoxComentarioApuesta.text <> "" Then
+        TextAreaBalance.text = "Comentario: " & TextBoxComentarioApuesta.text & "\n"
+    Endif
+
     If TextBoxId.text = "" Then
-        TextBoxId.text = Buttoncentena.text & ButtonDecena.text & ButtonUnidad.Text
+        TextBoxId.text = ButtonDecenaMillar.text & ButtonUnidadMillar.text & " " & Buttoncentena.text & ButtonDecena.text & ButtonUnidad.Text
+
+        settings["decenamillar"] = ButtonDecenaMillar.Text
+        settings["unidadmillar"] = ButtonUnidadMillar.Text
+
     Endif
     'traduccion
 
@@ -317,6 +348,12 @@ Public Sub Form_Open()
 
     Me.Title = "Traductor a Balance vesion " & Application.Version
 
+    LabelComentarios.text = "Comentarios sobre traducción..."
+    LabelComentarios.Background = Color.White
+
+    ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
+    ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
+
 End
 
 Public Sub ButtonCopiaralPortapapeles_Click()
@@ -355,17 +392,17 @@ Public Sub ButtonRealizarTransferencia_Click()
 
 End
 
-Public Sub ButtonEstructuraFreebet_Click()
-
-    Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
-
-End
-
-Public Sub ButtonEstructuraFreebet2_Click()
-
-    Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
-
-End
+' Public Sub ButtonEstructuraFreebet_Click()
+'
+'     Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
+'
+' End
+'
+' Public Sub ButtonEstructuraFreebet2_Click()
+'
+'     Clipboard.Copy("Casa\tMercado\tCantidad\tCuota\tPremio\tBeneficio\tResultado")
+'
+' End
 
 Public Sub ButtonLimpiarInicio_Click()
 
@@ -375,6 +412,16 @@ Public Sub ButtonLimpiarInicio_Click()
     datoBeneficio = 0
     TextAreaBalance.text = ""
     TextBoxId.text = ""
+    LabelComentarios.text = ""
+    LabelComentarios.Background = Color.rgb(255, 255, 255)
+    ButtonPegar2.enabled = False
+    DateBoxFechaHora.value = Date(0, 0, 0)
+
+    LabelComentarios.text = "Comentarios sobre traducción..."
+    LabelComentarios.Background = Color.White
+
+    ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
+    ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
 
 End
 
@@ -404,3 +451,17 @@ End
 ''TODO: POR HACER
 ''NOTE: COMENTARIOS
 ''FIXME: ARREGLAME
+
+Public Sub ButtonPegar2_Click()
+
+    ButtonPegar2.enabled = False
+    Clipboard.Copy(ButtonPegar2.tag)
+    ButtonPegar_Click()
+
+End
+
+Public Sub ButtonPegaComentarioApuesta_Click()
+
+    TextBoxComentarioApuesta.text = Clipboard.Paste()
+
+End
