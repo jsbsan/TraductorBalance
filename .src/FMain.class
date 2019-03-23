@@ -32,6 +32,14 @@ Public Sub ButtonPegar_Click()
     'borrar lineas en blanco
     lineas = Split(TextAreaApuesta.text, "\n")
 
+    'por si el codigo pegado contiene en la 1º linea un comentario
+    If Mid$(lineas[0], 1, 1) = "'" Then
+        'se trata de un comentario
+        TextBoxComentarioApuesta.text = Replace(lineas[0], "\t", " ")
+        TextBoxComentarioApuesta.pos = 1
+        lineas.Delete(0)
+    Endif
+
     'copio las lineas
     For a = 0 To lineas.Max
         lineascopia.add(lineas[a])

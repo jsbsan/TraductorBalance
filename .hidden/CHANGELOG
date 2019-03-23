@@ -1,3 +1,6 @@
+* Sat Mar 23 2019 mint <mint@mint-SSD> 0.0.20
+- si el codigo a traducir tiene en la primera linea un apostrofe lo traduce como comentario
+
 * Sat Mar 23 2019 mint <mint@mint-SSD> 0.0.19
 - mejoras al añadir comentarios y id completo a apuesta
 

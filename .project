@@ -2,7 +2,7 @@
 Title=HerramientaBalance
 Startup=FMain
 Icon=balanza.png
-Version=0.0.19
+Version=0.0.20
 Component=gb.image
 Component=gb.gui.qt
 Component=gb.form
@@ -15,7 +15,7 @@ SourcePath=/home/mint/Descargas/debian
 Maintainer=mint
 Address=mint@mint-SSD
 License=General Public License
-PackageName=traductorbalance-0.0.19
+PackageName=traductorbalance-0.0.20
 CreateEachDirectory=1
 Packager=1
 Systems=debian
