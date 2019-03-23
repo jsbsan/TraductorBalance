@@ -1,3 +1,6 @@
+* Sat Mar 23 2019 mint <mint@mint-SSD> 0.0.21
+- comentario puede ser ademas de apostrofe con el inicio de las 3 letras de promocion o apuesta
+
 * Sat Mar 23 2019 mint <mint@mint-SSD> 0.0.20
 - si el codigo a traducir tiene en la primera linea un apostrofe lo traduce como comentario
 

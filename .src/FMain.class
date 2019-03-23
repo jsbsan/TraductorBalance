@@ -32,8 +32,11 @@ Public Sub ButtonPegar_Click()
     'borrar lineas en blanco
     lineas = Split(TextAreaApuesta.text, "\n")
 
-    'por si el codigo pegado contiene en la 1º linea un comentario
-    If Mid$(lineas[0], 1, 1) = "'" Then
+    'por si el codigo pegado contiene en la 1º linea un comentari0
+    ' con apostrofe
+    'con palabra de inicio "pro" -> promocion
+    'con palabra de inicio "apu" -> apuesta
+    If Mid$(lineas[0], 1, 1) = "'" Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("pro") Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("apu") Then
         'se trata de un comentario
         TextBoxComentarioApuesta.text = Replace(lineas[0], "\t", " ")
         TextBoxComentarioApuesta.pos = 1
