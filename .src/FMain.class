@@ -433,6 +433,8 @@ Public Sub ButtonLimpiarInicio_Click()
 
     ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
     ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
+    'corrado de comentario de apuesta
+    TextBoxComentarioApuesta.text = ""
 
 End
 
