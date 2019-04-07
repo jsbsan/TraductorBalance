@@ -4,7 +4,7 @@
   MoveScaled(0,0,86,79)
   Background = &H77C0AD&
   Text = ("Traductor a Balance")
-  Icon = Picture["balanza.jpg"]
+  Icon = Picture["balanza2.png"]
   Resizable = False
   { TextAreaBalance TextArea
     MoveScaled(2,48,69,26)

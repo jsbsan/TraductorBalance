@@ -1,3 +1,6 @@
+* Sun Apr 07 2019 mint <mint@mint-SSD> 0.0.22
+- mejora agrego casas oficiales de clones y cuando escribo el id se configura 2 cifras espacio y el resto
+
 * Mon Mar 25 2019 mint <mint@mint-SSD> 0.0.21
 - borra tambien el comentario al pulsar el boton de borrado
 

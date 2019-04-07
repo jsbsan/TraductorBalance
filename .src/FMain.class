@@ -185,7 +185,12 @@ End
 Public Sub ButtonPegaId_Click()
     'solo copia los 7 primeros caracteres, para evitar errores de pegar otras cosas que no sean el id de identificacion
 
-    TextBoxId.text = Mid$(Clipboard.Paste(), 1, 7)
+    TextBoxId.text = Mid$(Clipboard.Paste("text/plain"), 1, 12) 'solo lee el dato en formato texto
+    If Len(TextBoxId.text) < 6 Then
+        'separo por 2 espacio y luego 3
+        TextBoxId.text = Mid(textBoxId.text, 1, 2) & " " & Mid(TextBoxId.text, 3, 3)
+
+    Endif
 
 End
 
@@ -476,5 +481,31 @@ End
 Public Sub ButtonPegaComentarioApuesta_Click()
 
     TextBoxComentarioApuesta.text = Clipboard.Paste()
+
+End
+
+Public Sub TextBoxId_KeyPress()
+
+    If Key.code = Key.enter Or Key.code = Key.return Then
+        comprobarIdTexto(textboxid)
+    Endif
+
+End
+
+Public Sub TextBoxId_LostFocus()
+
+    comprobarIdTexto(textboxid)
+
+End
+
+''comprobacion de codigo id de textobox
+
+Public Function comprobarIdTexto(t As Textbox)
+
+    If Len(T.text) < 6 Then
+        'separo por 2 espacio y luego 3
+        T.text = Mid(t.text, 1, 2) & " " & Mid(T.text, 3, 3)
+
+    Endif
 
 End
