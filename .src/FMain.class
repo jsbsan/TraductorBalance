@@ -405,6 +405,7 @@ Public Sub ButtonRealizarTransferencia_Click()
         TextAreaBalance.text &= ComboBoxA.text & "\t"
         TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
     Endif
+    Clipboard.Copy(TextAreaBalance.text)
 
 End
 
