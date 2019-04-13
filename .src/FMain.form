@@ -3,6 +3,7 @@
 { Form Form
   MoveScaled(0,0,86,79)
   Background = &H77C0AD&
+  ToolTip = (" User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
   Icon = Picture["balanza2.png"]
   Resizable = False
@@ -10,11 +11,11 @@
     MoveScaled(2,48,69,26)
   }
   { ButtonCopiaralPortapapeles Button
-    MoveScaled(73,66,9,7)
+    MoveScaled(75,57,9,7)
     Picture = Picture["icon:/16/copy"]
   }
   { ButtonLimpiar Button
-    MoveScaled(73,54,9,7)
+    MoveScaled(75,48,9,7)
     Picture = Picture["icon:/16/clear"]
   }
   { LabelComentarios Label
@@ -185,5 +186,10 @@
       MoveScaled(50,3,25,4)
     }
     Index = 0
+  }
+  { almacen Button
+    MoveScaled(73,68,12,6)
+    Text = ("Almacén")
+    Picture = Picture["icon:/16/save"]
   }
 }

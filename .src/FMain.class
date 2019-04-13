@@ -509,3 +509,18 @@ Public Function comprobarIdTexto(t As Textbox)
     Endif
 
 End
+
+Public Sub almacen_Click()
+
+    Dim hfile As File
+    Dim sline As String
+
+    Dim nombrefichero As String = User.home & "/informacion.csv"
+
+    hfile = Open nombrefichero For Append
+
+    Write #hfile, TextAreaBalance.Text
+
+    Close hfile
+
+End
