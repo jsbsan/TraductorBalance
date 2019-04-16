@@ -516,12 +516,22 @@ Public Sub almacen_Click()
     Dim hfile As File
     Dim sline As String
 
-    Dim nombrefichero As String = User.home & "/informacion.csv"
+    If TextAreaBalance.Text <> "" Then
+        Dim nombrefichero As String = User.home & "/informacion.csv"
 
-    hfile = Open nombrefichero For Append
+        hfile = Open nombrefichero For Append
 
-    Write #hfile, TextAreaBalance.Text
+        Write #hfile, TextAreaBalance.Text
 
-    Close hfile
+        Close hfile
+
+        'paso el contenido de textarea al formulario para que lo muestre...
+        Dim contenidoPaso As New String[]
+        contenidoPaso.add(TextAreaBalance.Text)
+        FormTraspaso.contenido = contenidoPaso
+        FormTraspaso.Show()
+    Else
+        Message.Info("No hay contido a almacenar")
+    Endif
 
 End
