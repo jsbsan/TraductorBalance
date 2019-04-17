@@ -116,7 +116,6 @@
     }
     { DateBoxFechaHora DateBox
       MoveScaled(36,6,18,4)
-      Mode = DateChooser.DateTime
     }
     { ButtonPegar2 Button
       MoveScaled(68,5,5,6)
@@ -188,8 +187,8 @@
     Index = 0
   }
   { almacen Button
-    MoveScaled(73,68,12,6)
+    MoveScaled(72,68,13,6)
     Text = ("Almacén")
-    Picture = Picture["icon:/16/save"]
+    Picture = Picture["flechaazul32x32.png"]
   }
 }

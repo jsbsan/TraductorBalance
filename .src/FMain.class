@@ -66,6 +66,7 @@ Public Sub ButtonPegar_Click()
     If TraduccionErronea = False Then
         'pulsar el boton de copiar al portapapeles
         ButtonCopiaralPortapapeles_Click()
+        almacen.Picture = Picture["flechaRojo32x32.png"]
     Endif
 
 End
@@ -530,6 +531,7 @@ Public Sub almacen_Click()
         contenidoPaso.add(TextAreaBalance.Text)
         FormTraspaso.contenido = contenidoPaso
         FormTraspaso.Show()
+        almacen.Picture = Picture["flechaazul32x32.png"]
     Else
         Message.Info("No hay contido a almacenar")
     Endif
