@@ -262,7 +262,7 @@ Public Sub ButtonTraducir_Click()
                 If ZZBeneficio = False Then
                     'solo pone la resta del beneficio una vez...
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(DateBoxFechaHora.valuew, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
                     TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
                     ZZbeneficio = True
