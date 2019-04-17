@@ -200,6 +200,10 @@ Public Sub ButtonTraducir_Click()
     Dim dtmp As DatoApuesta
     Dim ZZBeneficio As Boolean = False
 
+    If DateBoxFechaHora.Value = Null Then
+        DateBoxFechaHora.value = Now
+    Endif
+
     'limpio texto traducido y lo dejo en blanco
 
     TextAreaBalance.text = ""
@@ -221,19 +225,19 @@ Public Sub ButtonTraducir_Click()
 
         For Each dtmp In listaApuesta
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+            TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
             TextAreaBalance.text &= dtmp.casa & "\t"
             TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
 
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+            TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
             TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
             TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "|" & Str$(DateBoxFechaHora.Value) & "\n"
             'añadir apunte Zz beneficio
         Next
 
         TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= "Zz beneficio" & "\t"
         TextAreaBalance.text &= Str$(datoBeneficio) & "\t" & "enjuego" & "\n"
 
@@ -242,7 +246,7 @@ Public Sub ButtonTraducir_Click()
     If RadioButtonNormal.value = True And RadioButtonResuelta.value = True Then
         For Each dtmp In listaApuesta
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-            TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+            TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
 
             TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
             TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
@@ -251,14 +255,14 @@ Public Sub ButtonTraducir_Click()
             If dtmp.beneficio <> 0 Then
 
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
 
                 If ZZBeneficio = False Then
                     'solo pone la resta del beneficio una vez...
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= Format(DateBoxFechaHora.valuew, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
                     TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
                     ZZbeneficio = True
@@ -275,12 +279,12 @@ Public Sub ButtonTraducir_Click()
         For Each dtmp In listaApuesta
             If dtmp.tipo = "normal" Then
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
 
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(dtmp.importe) & "\t" & dtmp.mercado & "|" & Str$(DateBoxFechaHora.Value) & "\n"
                 'añadir apunte Zz beneficio
@@ -294,7 +298,7 @@ Public Sub ButtonTraducir_Click()
                 'tipo freebet
                 'no pongo nada (tengo jugado freebet pero sin ningun valor)
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(0) & "\t" & dtmp.mercado & " (freebet de valor " & Str$(dtmp.importe) & "€)" & "\n"
 
@@ -303,7 +307,7 @@ Public Sub ButtonTraducir_Click()
         Next
 
         TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+        TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= "Zz beneficio" & "\t"
         TextAreaBalance.text &= Str$(datoBeneficio) & "\t" & "enjuego" & "\n"
 
@@ -315,7 +319,7 @@ Public Sub ButtonTraducir_Click()
         For Each dtmp In listaApuesta
             If dtmp.tipo <> "gratis" Then
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
 
                 TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
@@ -323,12 +327,12 @@ Public Sub ButtonTraducir_Click()
                 'añadir apunte Zz beneficio
                 If dtmp.beneficio <> 0 Then
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= dtmp.casa & "\t"
                     TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
 
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
                     TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
 
@@ -337,7 +341,7 @@ Public Sub ButtonTraducir_Click()
             Else
                 If dtmp.beneficio <> 0 Then
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                    TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= dtmp.casa & "\t"
                     TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
@@ -345,7 +349,7 @@ Public Sub ButtonTraducir_Click()
                     If ZZBeneficio = False Then
                         'solo pone la resta del beneficio una vez...
 
-                        TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
+                        TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                         TextAreaBalance.text &= "Zz beneficio" & "\t"
                         TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
                     Endif
