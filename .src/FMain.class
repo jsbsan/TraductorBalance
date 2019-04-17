@@ -359,9 +359,9 @@ End
 
 Public Sub Form_Open()
 
-    ComboBoxA.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+    ComboBoxA.list = ["0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888", "0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal eva"]
 
-    ComboBoxDE.list = ["0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
+    ComboBoxDE.list = ComboBoxA.list '["0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
 
     Me.Title = "Traductor a Balance vesion " & Application.Version
 
@@ -407,6 +407,7 @@ Public Sub ButtonRealizarTransferencia_Click()
         TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
     Endif
     Clipboard.Copy(TextAreaBalance.text)
+    almacen.Picture = Picture["flechaRojo32x32.png"]
 
 End
 
