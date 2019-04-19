@@ -44,7 +44,7 @@ Public Sub CalcularPegado()
         'comprobacion de id dentro de comentario
         Dim existeId As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("ID:"))
         If existeID <> 0 Then
-            TextBoxId.text = RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text)))
+            TextBoxId.text = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text))))
 
         Endif
 

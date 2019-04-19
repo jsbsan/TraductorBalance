@@ -1,3 +1,6 @@
+* Fri Apr 19 2019 jsbsan <jusabejusabe@gmail.com> 0.0.30
+- elimina espacio antes del id
+
 * Fri Apr 19 2019 jsbsan <jusabejusabe@gmail.com> 0.0.29
 - mejoras al reconocer en el comentario el codigo ID puesto al final del comentario despues de ID: y ademas se añade boton de calculo para cuando haya cambio de fecha lo pueda reflejar en la traduccion
 
