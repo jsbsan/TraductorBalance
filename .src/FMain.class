@@ -6,22 +6,22 @@ Public Dtmp As New DatoApuesta
 Public datoBeneficio As Float
 Public traduccionErronea As Boolean = False
 
-Public Sub ButtonPegar_Click()
+Public Sub CalcularPegado()
+    'calculo principal
 
     Dim a As Integer
     Dim l As String
     Dim lineas As String[]
     Dim lineascopia As New String[]
 
-    'activo boton secundario para pegar contenido original
+    If TextAreaApuesta.text = "" Then
+        Message.Error("No hay nada que traducir, pegue datos")
+        Return
+    Else
+        TextAreaBalance.TEXT = ""
+        listaApuesta.Clear()
 
-    ButtonPegar2.tag = Clipboard.Paste()
-    ButtonPegar2.enabled = True
-
-    listaApuesta.Clear()
-    TextAreaApuesta.text = Clipboard.Paste()
-
-    'si contiene el signo ← se trata de una apuesta resuelta
+    Endif
 
     If comun.contiene(TextAreaApuesta.text, "←") Then
         RadioButtonResuelta.value = True
@@ -36,9 +36,18 @@ Public Sub ButtonPegar_Click()
     ' con apostrofe
     'con palabra de inicio "pro" -> promocion
     'con palabra de inicio "apu" -> apuesta
-    If Mid$(lineas[0], 1, 1) = "'" Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("pro") Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("apu") Then
+    If Mid$(lineas[0], 1, 1) = "'" Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("pro") Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("apu") Or Upper$(Mid$(lineas[0], 1, 3)) = Upper$("com") Then
+        'apendice de comentario, pro de promocion o apu de apuesta, com de comentario
         'se trata de un comentario
         TextBoxComentarioApuesta.text = Replace(lineas[0], "\t", " ")
+
+        'comprobacion de id dentro de comentario
+        Dim existeId As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("ID:"))
+        If existeID <> 0 Then
+            TextBoxId.text = RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text)))
+
+        Endif
+
         TextBoxComentarioApuesta.pos = 1
         lineas.Delete(0)
     Endif
@@ -68,6 +77,21 @@ Public Sub ButtonPegar_Click()
         ButtonCopiaralPortapapeles_Click()
         almacen.Picture = Picture["flechaRojo32x32.png"]
     Endif
+
+End
+
+Public Sub ButtonPegar_Click()
+
+    'activo boton secundario para pegar contenido original
+
+    ButtonPegar2.tag = Clipboard.Paste()
+    ButtonPegar2.enabled = True
+
+    TextAreaApuesta.text = Clipboard.Paste()
+
+    'si contiene el signo ← se trata de una apuesta resuelta
+
+    calcularPegado()
 
 End
 
@@ -540,5 +564,11 @@ Public Sub almacen_Click()
     Else
         Message.Info("No hay contido a almacenar")
     Endif
+
+End
+
+Public Sub ButtonCalcula_Click()
+
+    CalcularPegado()
 
 End

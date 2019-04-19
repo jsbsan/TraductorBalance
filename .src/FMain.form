@@ -114,9 +114,6 @@
       MoveScaled(76,5,5,6)
       Picture = Picture["icon:/16/clear"]
     }
-    { DateBoxFechaHora DateBox
-      MoveScaled(36,6,18,4)
-    }
     { ButtonPegar2 Button
       MoveScaled(68,5,5,6)
       Enabled = False
@@ -142,7 +139,7 @@
     { TextBoxComentarioApuesta TextBox
       MoveScaled(26,0,57,4)
       Font = Font["-1"]
-      ToolTip = ("si el codigo tiene en la primera linea un apostrofe se traduce como comentario automaticamente")
+      ToolTip = ("si el codigo tiene en la primera linea un apostrofe se traduce como comentario automaticamente. Ademas si al final se le pone ID: y el codigo id lo reconoce y lo incorpora a la traduccion")
     }
     { TextLabel6 TextLabel
       MoveScaled(2,0,19,4)
@@ -152,6 +149,22 @@
     { ButtonPegaComentarioApuesta Button
       MoveScaled(21,0,4,4)
       Picture = Picture["icon:/16/paste"]
+    }
+    { Panel1 Panel
+      MoveScaled(35,4,25,7)
+      Border = Border.Plain
+      { DateBoxFechaHora DateBox
+        MoveScaled(0,3,18,4)
+      }
+      { ButtonCalcula Button
+        MoveScaled(19,1,5,6)
+        ToolTip = ("calcula lo pegado")
+        Picture = Picture["icon:/16/calculator"]
+      }
+      { Label2 Label
+        MoveScaled(1,0,14,3)
+        Text = ("Fecha final:")
+      }
     }
     Index = 1
     Text = ("Transferencia")
