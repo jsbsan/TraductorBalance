@@ -565,6 +565,9 @@ Public Sub almacen_Click()
         Message.Info("No hay contido a almacenar")
     Endif
 
+    'pongo el foco en text balance (para imperidr que si darme cuenta le de al boton de almacenar dos veces)
+    TextAreaBalance.SetFocus()
+
 End
 
 Public Sub ButtonCalcula_Click()
