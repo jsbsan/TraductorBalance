@@ -83,7 +83,7 @@ End
 Public Sub ButtonPegar_Click()
 
     'activo boton secundario para pegar contenido original
-
+    TextBoxComentarioApuesta.text = ""
     ButtonPegar2.tag = Clipboard.Paste()
     ButtonPegar2.enabled = True
 
