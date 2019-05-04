@@ -79,6 +79,7 @@ Public Function similar(casa As String) As String
     If contiene(casa, "mat") Then Return "mbet"
     If contiene(casa, "tho") Then Return "mbet"
     If contiene(casa, "mara") Then Return "mbet"
+    If contiene(casa, "met") Then Return "mbet"
 
     If contiene(casa, "3") Then Return "bet365"
     If contiene(casa, "6") Then Return "bet365"
