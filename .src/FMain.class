@@ -251,7 +251,7 @@ Public Sub ButtonTraducir_Click()
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
             TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
             TextAreaBalance.text &= dtmp.casa & "\t"
-            TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+            TextAreaBalance.text &= Str$(-dtmp.importe) & "\n"
 
             TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
             TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
@@ -273,7 +273,7 @@ Public Sub ButtonTraducir_Click()
             TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
 
             TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
-            TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+            TextAreaBalance.text &= Str$(-dtmp.importe) & "\n"
 
             'añadir apunte Zz beneficio
             If dtmp.beneficio <> 0 Then
@@ -288,7 +288,7 @@ Public Sub ButtonTraducir_Click()
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
+                    TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
                     ZZbeneficio = True
                 Endif
 
@@ -305,7 +305,7 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                 TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                 TextAreaBalance.text &= dtmp.casa & "\t"
-                TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+                TextAreaBalance.text &= Str$(-dtmp.importe) & "\n"
 
                 TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                 TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
@@ -346,7 +346,7 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
 
                 TextAreaBalance.text &= "zen juego " & dtmp.casa & "\t"
-                TextAreaBalance.text &= Str$(- dtmp.importe) & "\n"
+                TextAreaBalance.text &= Str$(-dtmp.importe) & "\n"
 
                 'añadir apunte Zz beneficio
                 If dtmp.beneficio <> 0 Then
@@ -358,7 +358,7 @@ Public Sub ButtonTraducir_Click()
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
+                    TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
 
                 Endif
 
@@ -375,7 +375,7 @@ Public Sub ButtonTraducir_Click()
 
                         TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                         TextAreaBalance.text &= "Zz beneficio" & "\t"
-                        TextAreaBalance.text &= Str$(- datoBeneficio) & "\t" & "terminada" & "\n"
+                        TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
                     Endif
                 Endif
             Endif
@@ -387,7 +387,7 @@ End
 
 Public Sub Form_Open()
 
-    ComboBoxA.list = ["0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888", "0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal eva"]
+    ComboBoxA.list = ["0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888", "0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal eva", " "]
 
     ComboBoxDE.list = ComboBoxA.list '["0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
 
@@ -421,11 +421,11 @@ Public Sub ButtonRealizarTransferencia_Click()
 
     TextAreaBalance.text = ""
 
-    If Not ComboBoxDE.text = "" Then
+    If Not Replace(ComboBoxDE.text, " ", "") = "" Then
         TextAreaBalance.text &= "\t"
         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= ComboBoxDE.text & "\t"
-        TextAreaBalance.text &= Str$(- ValueBox1.value) & "\n"
+        TextAreaBalance.text &= Str$(-ValueBox1.value) & "\n"
     Endif
 
     If Not ComboBoxA.text = "" Then
