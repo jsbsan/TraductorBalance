@@ -139,7 +139,7 @@
     { TextBoxComentarioApuesta TextBox
       MoveScaled(26,0,57,4)
       Font = Font["-1"]
-      ToolTip = ("si el codigo tiene en la primera linea un apostrofe se traduce como comentario automaticamente. Ademas si al final se le pone ID: y el codigo id lo reconoce y lo incorpora a la traduccion")
+      ToolTip = ("Si el codigo pegado contiene en la primera linea un apostrofe o empieza por  \"apu\"  \"pro\" o \"com\", se traduce como comentario automaticamente. \nSi contiene la etiqueta \"Fecha:\", lee los sigueintes 6 caracteres y lo convierte en fecha, ejemplo fecha: 12/05 -> leerá la fecha 12/05/2019.\nAdemas si al final se le pone ID: y el codigo id lo reconoce y lo incorpora a la traduccion.")
     }
     { TextLabel6 TextLabel
       MoveScaled(2,0,19,4)

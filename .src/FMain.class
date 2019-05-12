@@ -41,11 +41,19 @@ Public Sub CalcularPegado()
         'se trata de un comentario
         TextBoxComentarioApuesta.text = Replace(lineas[0], "\t", " ")
 
-        'comprobacion de id dentro de comentario
+        'comprobacion de id dentro de comentario "id:"
         Dim existeId As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("ID:"))
         If existeID <> 0 Then
             TextBoxId.text = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text))))
+        Endif
 
+        'comprobacion de fecha: dentro de comentario "fecha:" , fecha como "dd/mm"
+        Dim existeFecha As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("FECHA:"))
+        If existeFecha <> 0 Then
+            Dim comentariofecha As String 'contiene la fecha extraida del comentario
+
+            comentariofecha = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeFecha + 6, 6)))
+            DateBoxFechaHora.Value = Date(Year(Now), Val(Mid$(comentariofecha, 4, 2)), Val(Mid$(comentariofecha, 1, 2)))
         Endif
 
         TextBoxComentarioApuesta.pos = 1
