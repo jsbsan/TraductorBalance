@@ -197,6 +197,13 @@
     { ComboBoxA ComboBox
       MoveScaled(50,3,25,4)
     }
+    { Label3 Label
+      MoveScaled(4,13,15,4)
+      Text = ("Comentario:")
+    }
+    { TextBoxComentarioTransferencia TextBox
+      MoveScaled(7,18,65,4)
+    }
     Index = 0
   }
   { almacen Button

@@ -418,6 +418,7 @@ End
 Public Sub ButtonLimpiar_Click()
 
     TextAreaBalance.text = ""
+    TextBoxComentarioTransferencia.text = ""
 
 End
 
@@ -430,14 +431,14 @@ Public Sub ButtonRealizarTransferencia_Click()
     TextAreaBalance.text = ""
 
     If Not Replace(ComboBoxDE.text, " ", "") = "" Then
-        TextAreaBalance.text &= "\t"
+        TextAreaBalance.text &= TextBoxComentarioTransferencia.text & "\t"
         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= ComboBoxDE.text & "\t"
         TextAreaBalance.text &= Str$(-ValueBox1.value) & "\n"
     Endif
 
     If Not ComboBoxA.text = "" Then
-        TextAreaBalance.text &= "\t"
+        TextAreaBalance.text &= TextBoxComentarioTransferencia.text & "\t"
         TextAreaBalance.text &= Format(Now, "dd/mm/yyyy") & "\t"
         TextAreaBalance.text &= ComboBoxA.text & "\t"
         TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
