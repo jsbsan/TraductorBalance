@@ -45,6 +45,10 @@ Public Function similar(casa As String) As String
 
     If casa = "" Then Message.Info("Error: falta definir casa de apuesta")
 
+    If contiene(casa, "pas") Then Return "paston"
+    If contiene(casa, "paston") Then Return "paston"
+    If Len(casa) = 1 And casa = "p" Then Return "paston" '
+
     If contiene(casa, "f") Then Return "paf"
     If contiene(casa, "uni") Then Return "paf" 'unibet
 
