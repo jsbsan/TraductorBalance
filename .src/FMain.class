@@ -395,6 +395,12 @@ End
 
 Public Sub Form_Open()
 
+    If ModuleMeEjecuto.MeEjecuto() Then
+        'fin de la aplicación...
+        Me.Close()
+        Return
+    Endif
+
     ComboBoxA.list = ["0 paypal", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888", "0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal eva", " "]
 
     ComboBoxDE.list = ComboBoxA.list '["0 caixa", "0 bankia eva", "0 bankia julio", "0 openbank eva", "0 openbank julio", "0 paypal", "0 paypal eva", "bet365", "betstars", "botemania", "bwin", "circus", "codere", "goldenpark", "luckia", "mbet", "paf", "sportium", "wanabet", "williamhill", "888"]
