@@ -609,3 +609,9 @@ Public Sub cantidades_MouseDown()
     ValueBox1.value += Val(Last.Text)
 
 End
+
+Public Sub Label13_MouseDown()
+
+    TextBoxComentarioTransferencia.text &= Label13.Tag
+
+End

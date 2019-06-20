@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,85,79)
+  MoveScaled(0,0,86,79)
   Background = &H77C0AD&
   ToolTip = ("Fichero de Trabajo:  User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
@@ -23,7 +23,7 @@
     Text = ("Comentarios.") & "..."
   }
   { TabStrip1 TabStrip
-    MoveScaled(0,1,84,46)
+    MoveScaled(1,1,84,46)
     Count = 2
     Index = 0
     Text = ("Apuesta")
@@ -202,7 +202,7 @@
       Text = ("Comentario:")
     }
     { TextBoxComentarioTransferencia TextBox
-      MoveScaled(7,18,65,4)
+      MoveScaled(3,18,64,4)
     }
     { Label4 Label
       MoveScaled(45,9,35,3)
@@ -269,6 +269,13 @@
       Text = ("50")
       Alignment = Align.Center
       Border = Border.Plain
+    }
+    { Label13 Label
+      MoveScaled(69,18,11,4)
+      Tag = "ajuste"
+      ToolTip = ("añade la palabra ajuste al comentario")
+      Text = ("+ \"ajuste\"")
+      Alignment = Align.Center
     }
     Index = 0
   }
