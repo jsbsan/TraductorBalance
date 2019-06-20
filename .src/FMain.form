@@ -1,9 +1,9 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,86,79)
+  MoveScaled(0,0,85,79)
   Background = &H77C0AD&
-  ToolTip = (" User.home & \"/informacion.csv\"")
+  ToolTip = ("Fichero de Trabajo:  User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
   Icon = Picture["balanza2.png"]
   Resizable = False
@@ -23,7 +23,7 @@
     Text = ("Comentarios.") & "..."
   }
   { TabStrip1 TabStrip
-    MoveScaled(1,0,84,46)
+    MoveScaled(0,1,84,46)
     Count = 2
     Index = 0
     Text = ("Apuesta")
@@ -169,15 +169,15 @@
     Index = 1
     Text = ("Transferencia")
     { ValueBox1 ValueBox
-      MoveScaled(33,29,13,6)
+      MoveScaled(34,33,13,6)
     }
     { ButtonRealizarTransferencia Button
-      MoveScaled(62,28,18,7)
+      MoveScaled(61,32,18,7)
       Text = ("Transferencia")
       Picture = Picture["icon:/16/apply"]
     }
     { TextLabel2 TextLabel
-      MoveScaled(15,30,16,4)
+      MoveScaled(15,34,16,4)
       Text = ("Cantidad:")
       Alignment = Align.Right
     }
@@ -203,6 +203,72 @@
     }
     { TextBoxComentarioTransferencia TextBox
       MoveScaled(7,18,65,4)
+    }
+    { Label4 Label
+      MoveScaled(45,9,35,3)
+      Text = ("(usar este combo para realizar ajustes)")
+    }
+    { Label5 Label
+      MoveScaled(0,25,8,5)
+      Text = ("suma:")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label6 Label cantidades
+      Name = "Label6"
+      MoveScaled(9,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("1")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label7 Label cantidades
+      Name = "Label7"
+      MoveScaled(18,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("5")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label8 Label cantidades
+      Name = "Label8"
+      MoveScaled(27,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("10")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label9 Label cantidades
+      Name = "Label9"
+      MoveScaled(37,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("15")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label10 Label cantidades
+      Name = "Label10"
+      MoveScaled(46,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("20")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label11 Label cantidades
+      Name = "Label11"
+      MoveScaled(55,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("25")
+      Alignment = Align.Center
+      Border = Border.Plain
+    }
+    { Label12 Label cantidades
+      Name = "Label12"
+      MoveScaled(64,25,7,5)
+      ToolTip = ("haga click para sumar a la cantidad")
+      Text = ("50")
+      Alignment = Align.Center
+      Border = Border.Plain
     }
     Index = 0
   }

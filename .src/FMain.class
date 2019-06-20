@@ -183,6 +183,11 @@ Public Sub procesar(texto As String)
         Dtmp.premio = comun.valorar(palabras[4])
         dtmp.resuelta = IIf(RadioButtonResuelta.value, True, False)
 
+        If InStr(l, "←") <> 0 Then
+            'es la apuesta ganadora
+            dtmp.ganada = True
+        Endif
+
         If contador = 1 Then
             'la prmera apuesta es la que pongo siempre el freebet
 
@@ -230,7 +235,8 @@ End
 Public Sub ButtonTraducir_Click()
 
     Dim dtmp As DatoApuesta
-    Dim ZZBeneficio As Boolean = False
+
+    Dim terminadaApuesta As Boolean = False 'por si hay dos apuestas con ganadas en la misma promocion, poner un solo terminada
 
     If DateBoxFechaHora.Value = Null Then
         DateBoxFechaHora.value = Now
@@ -291,13 +297,14 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= dtmp.casa & "\t"
                 TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
 
-                If ZZBeneficio = False Then
-                    'solo pone la resta del beneficio una vez...
+                'solo pone la resta del beneficio una vez...
+                If terminadaApuesta = False Then
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= "Zz beneficio" & "\t"
+
                     TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
-                    ZZbeneficio = True
+                    terminadaApuesta = True
                 Endif
 
             Endif
@@ -357,34 +364,40 @@ Public Sub ButtonTraducir_Click()
                 TextAreaBalance.text &= Str$(-dtmp.importe) & "\n"
 
                 'añadir apunte Zz beneficio
-                If dtmp.beneficio <> 0 Then
+                If dtmp.beneficio <> 0 Or dtmp.ganada = True Then
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= dtmp.casa & "\t"
                     TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
 
-                    TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
-                    TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
-                    TextAreaBalance.text &= "Zz beneficio" & "\t"
-                    TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
+                    If terminadaApuesta = False Then
+                        TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
+                        TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
+                        TextAreaBalance.text &= "Zz beneficio" & "\t"
+
+                        TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
+                        terminadaApuesta = True
+                    Endif
 
                 Endif
 
             Else
-                If dtmp.beneficio <> 0 Then
+                If dtmp.beneficio <> 0 Or dtmp.ganada = True Then
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
                     TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                     TextAreaBalance.text &= dtmp.casa & "\t"
                     TextAreaBalance.text &= Str$(dtmp.premio) & "\t" & dtmp.mercado & "\n"
                     TextAreaBalance.text &= Replace(TextBoxId.text, "\n", "") & "\t"
 
-                    If ZZBeneficio = False Then
-                        'solo pone la resta del beneficio una vez...
-
+                    'solo pone la resta del beneficio una vez...
+                    If terminadaApuesta = False Then
                         TextAreaBalance.text &= Format(DateBoxFechaHora.value, "dd/mm/yyyy") & "\t"
                         TextAreaBalance.text &= "Zz beneficio" & "\t"
                         TextAreaBalance.text &= Str$(-datoBeneficio) & "\t" & "terminada" & "\n"
+
+                        terminadaApuesta = True
                     Endif
+
                 Endif
             Endif
 
@@ -588,5 +601,11 @@ End
 Public Sub ButtonCalcula_Click()
 
     CalcularPegado()
+
+End
+
+Public Sub cantidades_MouseDown()
+
+    ValueBox1.value += Val(Last.Text)
 
 End

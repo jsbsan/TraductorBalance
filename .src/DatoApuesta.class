@@ -10,6 +10,7 @@ Public tipo As String '' normal o gratis
 Public resuelta As Boolean '' si, no
 Public beneficio As Float ''contiene el valor del beneficio neto que se obtiene
 Public comentario As String
+Public ganada As Boolean = False 'si es la ganadora: true
 
 Private Function casa_Read() As String
 
