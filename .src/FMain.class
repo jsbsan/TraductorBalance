@@ -88,7 +88,7 @@ Public Sub CalcularPegado()
 
     TextAreaApuesta.text = lineascopia.Join("\n")
 
-    If traduccionErronea <> True
+    If traduccionErronea <> True Then
         'procesar información
         procesar(TextAreaApuesta.text)
         TextAreaBalance.text = ""
@@ -116,6 +116,7 @@ Public Sub ButtonPegar_Click()
     TextAreaApuesta.text = Clipboard.Paste()
 
     'si contiene el signo ← se trata de una apuesta resuelta
+    traduccionErronea = False 'reinicio la traducción
 
     calcularPegado()
 
@@ -517,6 +518,7 @@ Public Sub ButtonLimpiarInicio_Click()
     ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
     'corrado de comentario de apuesta
     TextBoxComentarioApuesta.text = ""
+    traduccionErronea = False 'reinicio la traducción
 
 End
 

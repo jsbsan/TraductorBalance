@@ -1,4 +1,7 @@
 * Sat Jun 29 2019 jsbsan <jusabejusabe@gmail.com> 0.0.39
+- se reinicia valor de traduccionerrorea cuando se pega o limpia.
+
+* Sat Jun 29 2019 jsbsan <jusabejusabe@gmail.com> 0.0.39
 - detecta errores a ala hora de leer la fecha en el comentario
 
 * Thu Jun 20 2019 jsbsan <jusabejusabe@gmail.com> 0.0.38
