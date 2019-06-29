@@ -43,7 +43,11 @@ Public Function similar(casa As String) As String
 
     casa = Lower(casa)
 
-    If casa = "" Then Message.Info("Error: falta definir casa de apuesta")
+    If casa = "" Then
+        Message.Info("Error: falta definir casa de apuesta")
+
+        Return ""
+    Endif
 
     If contiene(casa, "pas") Then Return "paston"
     If contiene(casa, "paston") Then Return "paston"

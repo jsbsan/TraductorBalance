@@ -53,7 +53,24 @@ Public Sub CalcularPegado()
             Dim comentariofecha As String 'contiene la fecha extraida del comentario
 
             comentariofecha = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeFecha + 6, 6)))
-            DateBoxFechaHora.Value = Date(Year(Now), Val(Mid$(comentariofecha, 4, 2)), Val(Mid$(comentariofecha, 1, 2)))
+            If InStr(Upper$(comentariofecha), "XX") <> 0 Then
+                Message.Info("Error: la fecha no ha sido bien introducida. Pone XX/XX")
+                LabelComentarios.text = "Error: la fecha no ha sido bien introducida. Pone XX/XX"
+                LabelComentarios.Background = Color.Yellow
+
+                traduccionErronea = True
+
+            Else
+                Try DateBoxFechaHora.Value = Date(Year(Now), Val(Mid$(comentariofecha, 4, 2)), Val(Mid$(comentariofecha, 1, 2)))
+                If Error Then
+                    Message.Info("Error: la fecha no ha sido bien introducida. No la puedo traducir")
+                    LabelComentarios.text = "Error: la fecha no ha sido bien introducida. No la puedo traducir"
+                    LabelComentarios.Background = Color.Yellow
+
+                    traduccionErronea = True
+                Endif
+            Endif
+
         Endif
 
         TextBoxComentarioApuesta.pos = 1
@@ -71,13 +88,14 @@ Public Sub CalcularPegado()
 
     TextAreaApuesta.text = lineascopia.Join("\n")
 
-    'procesar información
-    procesar(TextAreaApuesta.text)
-    TextAreaBalance.text = ""
+    If traduccionErronea <> True
+        'procesar información
+        procesar(TextAreaApuesta.text)
+        TextAreaBalance.text = ""
 
-    'pulsar al boton de traducir
-    ButtonTraducir_Click()
-
+        'pulsar al boton de traducir
+        ButtonTraducir_Click()
+    Endif
     'si no hay error lo copia al portapapeles
 
     If TraduccionErronea = False Then
