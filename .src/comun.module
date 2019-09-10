@@ -99,13 +99,14 @@ Public Function similar(casa As String) As String
     If contiene(casa, "tar") Then Return "betstars"
     If contiene(casa, "poke") Then Return "betstars"
 
-    If contiene(casa, "casa") Then
-        Message.Error("Casa de apuesta no indicada correctamente")
-        Return "ERROR"
-    Endif
 
     If Len(casa) = 1 And casa = "w" Then Return "williamhill" 'por defecto si es de longitud 1 caracter, y si es w ponew willianhilll
 
+    If contiene(casa, "casa") Then
+        Message.Error("Casa de apuesta no indicada correctamente")
+        Return "ERROR_CASA"
+    Endif
+    
     Return casa
 
 End

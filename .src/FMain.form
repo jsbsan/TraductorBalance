@@ -27,6 +27,7 @@
     Count = 2
     Index = 0
     Text = ("Apuesta")
+    Picture = Picture["apu48.png"]
     { TextAreaApuesta TextArea
       MoveScaled(1,15,80,15)
       Background = &HBFBFBF&
@@ -168,6 +169,7 @@
     }
     Index = 1
     Text = ("Transferencia")
+    Picture = Picture["frecladoble32x32.png"]
     { ValueBox1 ValueBox
       MoveScaled(34,33,13,6)
     }
@@ -281,6 +283,7 @@
   }
   { almacen Button
     MoveScaled(72,68,13,6)
+    Tag = "flechaAzul"
     Text = ("Almacén")
     Picture = Picture["flechaazul32x32.png"]
   }

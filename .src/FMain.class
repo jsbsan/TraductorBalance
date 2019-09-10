@@ -91,10 +91,12 @@ Public Sub CalcularPegado()
     If traduccionErronea <> True Then
         'procesar información
         procesar(TextAreaApuesta.text)
-        TextAreaBalance.text = ""
 
-        'pulsar al boton de traducir
-        ButtonTraducir_Click()
+        If traduccionErronea <> True Then
+            'sigo traducción...pulsar al boton de traducir
+            TextAreaBalance.text = ""
+            ButtonTraducir_Click()
+        Endif
     Endif
     'si no hay error lo copia al portapapeles
 
@@ -102,13 +104,27 @@ Public Sub CalcularPegado()
         'pulsar el boton de copiar al portapapeles
         ButtonCopiaralPortapapeles_Click()
         almacen.Picture = Picture["flechaRojo32x32.png"]
+        almacen.tag = "flechaRojo"
+        LabelComentarios.Background = Color.white
+        LabelComentarios.text = "Comentario: OK, traducción realizada"
     Endif
 
 End
 
 Public Sub ButtonPegar_Click()
 
+    If almacen.Tag <> "flechaAzul" Then
+        'cuando tengo el en modo feclaRoja, lo indico
+        Dim val As Integer = Message.Question("Hay pendiente traducción para guardar...", "Cancelar Traducción", "Continuar")
+        If val = 1 Then
+            LabelComentarios.text = "Comentario: Hay pendiente traducción para guardar"
+            LabelComentarios.Background = Color.Yellow
+            Return 'no hacer nada,cancelo la traducción
+        Endif
+    Endif
+
     'activo boton secundario para pegar contenido original
+
     TextBoxComentarioApuesta.text = ""
     ButtonPegar2.tag = Clipboard.Paste()
     ButtonPegar2.enabled = True
@@ -196,6 +212,11 @@ Public Sub procesar(texto As String)
         contador += 1
         palabras = Split(l, "\t")
         Dtmp.casa = comun.similar(palabras[0])
+        If dtmp.casa = "ERROR_CASA" Then
+            'ha habido  error de traduccion
+            TraduccionErronea = True
+            Return
+        Endif
         Dtmp.mercado = palabras[1]
         Dtmp.importe = comun.valorar(palabras[2])
         Dtmp.cuota = comun.valorar(palabras[3])
@@ -205,6 +226,7 @@ Public Sub procesar(texto As String)
         If InStr(l, "←") <> 0 Then
             'es la apuesta ganadora
             dtmp.ganada = True
+            LabelComentarios.text &= ".. apuesta resuelta y terminada (con ganador <-)"
         Endif
 
         If contador = 1 Then
@@ -267,6 +289,7 @@ Public Sub ButtonTraducir_Click()
 
     If TextBoxComentarioApuesta.text <> "" Then
         TextAreaBalance.text = "Comentario: " & TextBoxComentarioApuesta.text & "\n"
+        LabelComentarios.Background = Color.white
     Endif
 
     If TextBoxId.text = "" Then
@@ -276,6 +299,17 @@ Public Sub ButtonTraducir_Click()
         settings["unidadmillar"] = ButtonUnidadMillar.Text
 
     Endif
+
+    'comprobación id
+    If TextBoxId.text = "00 000" Then
+        Message.Error("Codigo ID " & TextBoxId.text & " de la apuesta es incorrecto")
+        TextAreaBalance.text = ""
+        textAreaBalance.text = "Comentario: Error en el código Id de la apuesta"
+        LabelComentarios.Background = Color.Yellow
+        TraduccionErronea = True
+        Return
+    Endif
+
     'traduccion
 
     If RadioButtonNormal.value = True And RadioButtonPrepartido.value = True Then
@@ -483,6 +517,7 @@ Public Sub ButtonRealizarTransferencia_Click()
     Endif
     Clipboard.Copy(TextAreaBalance.text)
     almacen.Picture = Picture["flechaRojo32x32.png"]
+    almacen.tag = "flechaRojo"
 
 End
 
@@ -609,6 +644,7 @@ Public Sub almacen_Click()
         FormTraspaso.contenido = contenidoPaso
         FormTraspaso.Show()
         almacen.Picture = Picture["flechaazul32x32.png"]
+        almacen.tag = "flechaAzul"
     Else
         Message.Info("No hay contido a almacenar")
     Endif
