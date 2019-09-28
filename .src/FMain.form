@@ -290,5 +290,6 @@
   { PictureBoxImagen PictureBox
     MoveScaled(2,75,82,18)
     Border = Border.Plain
+    Mode = PictureBox.Fill
   }
 }
