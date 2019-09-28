@@ -96,6 +96,9 @@ Public Sub CalcularPegado()
             'sigo traducción...pulsar al boton de traducir
             TextAreaBalance.text = ""
             ButtonTraducir_Click()
+        Else
+            LabelComentarios.text = "Comentario: Error en detectar casa de apuesta"
+            LabelComentarios.Background = Color.Yellow
         Endif
     Endif
     'si no hay error lo copia al portapapeles
@@ -112,6 +115,8 @@ Public Sub CalcularPegado()
 End
 
 Public Sub ButtonPegar_Click()
+
+    Try PictureBoxImagen.Picture = Clipboard.Paste("image/png").picture
 
     If almacen.Tag <> "flechaAzul" Then
         'cuando tengo el en modo feclaRoja, lo indico
@@ -158,6 +163,7 @@ Public Sub procesar(texto As String)
     If palabras.count = 7 Or palabras.count = 6 Then
         LabelComentarios.text = "Comentarios sobre traducción..."
         LabelComentarios.Background = Color.White
+
     Else
 
         'indico que se ha producido un error

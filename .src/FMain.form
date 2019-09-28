@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,86,79)
+  MoveScaled(0,0,86,98)
   Background = &H77C0AD&
   ToolTip = ("Fichero de Trabajo:  User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
@@ -19,7 +19,7 @@
     Picture = Picture["icon:/16/clear"]
   }
   { LabelComentarios Label
-    MoveScaled(2,75,82,3)
+    MoveScaled(2,94,82,3)
     Text = ("Comentarios.") & "..."
   }
   { TabStrip1 TabStrip
@@ -286,5 +286,9 @@
     Tag = "flechaAzul"
     Text = ("Almacén")
     Picture = Picture["flechaazul32x32.png"]
+  }
+  { PictureBoxImagen PictureBox
+    MoveScaled(2,75,82,18)
+    Border = Border.Plain
   }
 }
