@@ -680,3 +680,9 @@ Public Sub Label13_MouseDown()
     TextBoxComentarioTransferencia.text &= Label13.Tag
 
 End
+
+Public Sub ButtonEditor_Click()
+
+    Exec ["featherpad", User.home & "/informacion.csv"]
+
+End

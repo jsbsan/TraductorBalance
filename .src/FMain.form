@@ -35,7 +35,7 @@
       Wrap = True
     }
     { ButtonTraducir Button
-      MoveScaled(69,34,12,5)
+      MoveScaled(69,33,12,5)
       Text = ("Traducir")
       Picture = Picture["icon:/16/exec"]
     }
@@ -291,5 +291,11 @@
     MoveScaled(2,75,82,18)
     Border = Border.Plain
     Mode = PictureBox.Fill
+  }
+  { ButtonEditor Button
+    MoveScaled(61,1,23,4)
+    Font = Font["-2"]
+    Text = ("Editor Fichero Datos")
+    Picture = Picture["icon:/22/text"]
   }
 }
