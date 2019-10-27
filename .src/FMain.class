@@ -252,8 +252,11 @@ Public Sub procesar(texto As String)
             'no hay datos
         Else
 
-            If RadioButtonResuelta.value = True And If comun.contiene(palabras[6], "←") Then
-                dtmp.beneficio = beneficio 'tiene la fecha y se le asigna el beneficio
+            If RadioButtonResuelta.value = True And palabras.count = 7 Then
+
+                If comun.contiene(palabras[6], "←") Then
+                    dtmp.beneficio = beneficio 'tiene la fecha y se le asigna el beneficio
+                Endif
             Endif
         Endif
 
