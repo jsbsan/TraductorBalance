@@ -1,41 +1,41 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,86,98)
+  MoveScaled(0,0,110,98)
   Background = &H77C0AD&
   ToolTip = ("Fichero de Trabajo:  User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
   Icon = Picture["balanza2.png"]
   Resizable = False
   { TextAreaBalance TextArea
-    MoveScaled(2,48,69,26)
+    MoveScaled(1,48,93,26)
   }
   { ButtonCopiaralPortapapeles Button
-    MoveScaled(75,57,9,7)
+    MoveScaled(99,57,9,7)
     Picture = Picture["icon:/16/copy"]
   }
   { ButtonLimpiar Button
-    MoveScaled(75,48,9,7)
+    MoveScaled(99,48,9,7)
     Picture = Picture["icon:/16/clear"]
   }
   { LabelComentarios Label
-    MoveScaled(2,94,82,3)
+    MoveScaled(2,94,105,3)
     Text = ("Comentarios.") & "..."
   }
   { TabStrip1 TabStrip
-    MoveScaled(1,1,84,46)
+    MoveScaled(1,1,108,46)
     Count = 2
     Index = 0
     Text = ("Apuesta")
     Picture = Picture["apu48.png"]
     { TextAreaApuesta TextArea
-      MoveScaled(1,15,80,15)
+      MoveScaled(1,15,105,15)
       Background = &HBFBFBF&
       ReadOnly = True
       Wrap = True
     }
     { ButtonTraducir Button
-      MoveScaled(69,33,12,5)
+      MoveScaled(93,34,12,5)
       Text = ("Traducir")
       Picture = Picture["icon:/16/exec"]
     }
@@ -55,7 +55,7 @@
       }
     }
     { ButtonPegar Button
-      MoveScaled(61,5,5,6)
+      MoveScaled(82,5,5,6)
       ToolTip = ("pegar contenido, traducirlo y copiarlo")
       Picture = Picture["icon:/16/paste"]
     }
@@ -66,10 +66,10 @@
       Alignment = Align.TopNormal
     }
     { PanelIdApuesta Panel
-      MoveScaled(2,4,31,7)
+      MoveScaled(2,4,35,7)
       Border = Border.Plain
       { TextBoxId TextBox
-        MoveScaled(16,3,11,4)
+        MoveScaled(16,3,14,4)
         Font = Font["-2"]
         Alignment = Align.Center
       }
@@ -78,7 +78,7 @@
         Text = ("Id Apuesta:")
       }
       { ButtonPegaId Button
-        MoveScaled(27,3,4,4)
+        MoveScaled(31,3,4,4)
         Picture = Picture["icon:/16/paste"]
       }
       { ButtonDecena Button cifras
@@ -112,11 +112,11 @@
       Text = ("Nota: en la columna de resultado el signo ← indica que apuesta gano.")
     }
     { ButtonLimpiarInicio Button
-      MoveScaled(76,5,5,6)
+      MoveScaled(99,5,5,6)
       Picture = Picture["icon:/16/clear"]
     }
     { ButtonPegar2 Button
-      MoveScaled(68,5,5,6)
+      MoveScaled(91,5,5,6)
       Enabled = False
       ToolTip = ("pega el contenido original antes de traduccion")
       Text = ("2")
@@ -138,7 +138,7 @@
       }
     }
     { TextBoxComentarioApuesta TextBox
-      MoveScaled(26,0,57,4)
+      MoveScaled(26,0,79,4)
       Font = Font["-1"]
       ToolTip = ("Si el codigo pegado contiene en la primera linea un apostrofe o empieza por  \"apu\"  \"pro\" o \"com\", se traduce como comentario automaticamente. \nSi contiene la etiqueta \"Fecha:\", lee los sigueintes 6 caracteres y lo convierte en fecha, ejemplo fecha: 12/05 -> leerá la fecha 12/05/2019.\nAdemas si al final se le pone ID: y el codigo id lo reconoce y lo incorpora a la traduccion.")
     }
@@ -152,13 +152,13 @@
       Picture = Picture["icon:/16/paste"]
     }
     { Panel1 Panel
-      MoveScaled(35,4,25,7)
+      MoveScaled(37,4,43,7)
       Border = Border.Plain
       { DateBoxFechaHora DateBox
-        MoveScaled(0,3,18,4)
+        MoveScaled(0,3,24,4)
       }
       { ButtonCalcula Button
-        MoveScaled(19,1,5,6)
+        MoveScaled(36,1,5,6)
         ToolTip = ("calcula lo pegado")
         Picture = Picture["icon:/16/calculator"]
       }
@@ -282,18 +282,18 @@
     Index = 0
   }
   { almacen Button
-    MoveScaled(72,68,13,6)
+    MoveScaled(95,67,13,6)
     Tag = "flechaAzul"
     Text = ("Almacén")
     Picture = Picture["flechaazul32x32.png"]
   }
   { PictureBoxImagen PictureBox
-    MoveScaled(2,75,82,18)
+    MoveScaled(2,75,105,18)
     Border = Border.Plain
     Mode = PictureBox.Contain
   }
   { ButtonEditor Button
-    MoveScaled(61,1,23,4)
+    MoveScaled(83,1,23,4)
     Font = Font["-2"]
     Text = ("Editor Fichero Datos")
     Picture = Picture["icon:/22/text"]
