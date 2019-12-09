@@ -7,15 +7,12 @@
   Text = ("Traductor a Balance")
   Icon = Picture["balanza2.png"]
   Resizable = False
-  { TextAreaBalance TextArea
-    MoveScaled(1,48,93,26)
-  }
   { ButtonCopiaralPortapapeles Button
-    MoveScaled(99,57,9,7)
+    MoveScaled(102,57,7,7)
     Picture = Picture["icon:/16/copy"]
   }
   { ButtonLimpiar Button
-    MoveScaled(99,48,9,7)
+    MoveScaled(102,48,7,7)
     Picture = Picture["icon:/16/clear"]
   }
   { LabelComentarios Label
@@ -28,6 +25,12 @@
     Index = 0
     Text = ("Apuesta")
     Picture = Picture["apu48.png"]
+    { ButtonPegar Button
+      MoveScaled(82,5,5,6)
+      ToolTip = ("pegar contenido, traducirlo y copiarlo")
+      Text = Shortcut(("v"), "v")
+      Picture = Picture["icon:/16/paste"]
+    }
     { TextAreaApuesta TextArea
       MoveScaled(1,15,105,15)
       Background = &HBFBFBF&
@@ -54,11 +57,6 @@
         Text = ("Resuelta")
       }
     }
-    { ButtonPegar Button
-      MoveScaled(82,5,5,6)
-      ToolTip = ("pegar contenido, traducirlo y copiarlo")
-      Picture = Picture["icon:/16/paste"]
-    }
     { Label1 Label
       MoveScaled(1,11,80,4)
       Font = Font["+1"]
@@ -70,7 +68,7 @@
       Border = Border.Plain
       { TextBoxId TextBox
         MoveScaled(16,3,14,4)
-        Font = Font["-2"]
+        Font = Font["-1"]
         Alignment = Align.Center
       }
       { TextLabel1 TextLabel
@@ -112,7 +110,8 @@
       Text = ("Nota: en la columna de resultado el signo ← indica que apuesta gano.")
     }
     { ButtonLimpiarInicio Button
-      MoveScaled(99,5,5,6)
+      MoveScaled(99,5,6,6)
+      Text = Shortcut(("c"), "c")
       Picture = Picture["icon:/16/clear"]
     }
     { ButtonPegar2 Button
@@ -281,11 +280,17 @@
     }
     Index = 0
   }
-  { almacen Button
-    MoveScaled(95,67,13,6)
+  { TextAreaBalance TextArea
+    MoveScaled(1,48,100,26)
+    Font = Font["-1"]
+    ReadOnly = True
+  }
+  { BotonAlmacen Button
+    MoveScaled(102,66,7,7)
     Tag = "flechaAzul"
-    Text = ("Almacén")
-    Picture = Picture["flechaazul32x32.png"]
+    ToolTip = ("Almacén")
+    Text = Shortcut(("a"), "a")
+    Picture = Picture["flechaazul16x16.png"]
   }
   { PictureBoxImagen PictureBox
     MoveScaled(2,75,105,18)

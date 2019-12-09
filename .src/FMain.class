@@ -45,6 +45,7 @@ Public Sub CalcularPegado()
         Dim existeId As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("ID:"))
         If existeID <> 0 Then
             TextBoxId.text = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text))))
+            TextBoxComentarioApuesta.text = Mid$(TextBoxComentarioApuesta.text, 1, existeId - 1) & " [Guardado:" & Format(Now, "dd/mm/yy_hh:mm") & "] " & Mid$(TextBoxComentarioApuesta.text, existeId, Len(TextBoxComentarioApuesta.text))
         Endif
 
         'comprobacion de fecha: dentro de comentario "fecha:" , fecha como "dd/mm"
@@ -106,8 +107,8 @@ Public Sub CalcularPegado()
     If TraduccionErronea = False Then
         'pulsar el boton de copiar al portapapeles
         ButtonCopiaralPortapapeles_Click()
-        almacen.Picture = Picture["flechaRojo32x32.png"]
-        almacen.tag = "flechaRojo"
+        BotonAlmacen.Picture = Picture["flechaRojo16x16.png"]
+        BotonAlmacen.tag = "flechaRojo"
         LabelComentarios.Background = Color.white
         LabelComentarios.text = "Comentario: OK, traducción realizada"
     Endif
@@ -118,7 +119,7 @@ Public Sub ButtonPegar_Click()
 
     Try PictureBoxImagen.Picture = Clipboard.Paste("image/png").picture
 
-    If almacen.Tag <> "flechaAzul" Then
+    If BotonAlmacen.Tag <> "flechaAzul" Then
         'cuando tengo el en modo feclaRoja, lo indico
         Dim val As Integer = Message.Question("Hay pendiente traducción para guardar...", "Cancelar Traducción", "Continuar")
         If val = 1 Then
@@ -525,8 +526,8 @@ Public Sub ButtonRealizarTransferencia_Click()
         TextAreaBalance.text &= Str$(ValueBox1.value) & "\n"
     Endif
     Clipboard.Copy(TextAreaBalance.text)
-    almacen.Picture = Picture["flechaRojo32x32.png"]
-    almacen.tag = "flechaRojo"
+    BotonAlmacen.Picture = Picture["flechaRojo16x16.png"]
+    BotonAlmacen.tag = "flechaRojo"
 
 End
 
@@ -563,6 +564,9 @@ Public Sub ButtonLimpiarInicio_Click()
     'corrado de comentario de apuesta
     TextBoxComentarioApuesta.text = ""
     traduccionErronea = False 'reinicio la traducción
+    'borro icono de almacen
+    BotonAlmacen.Picture = Picture["flechaazul16x16.png"]
+    BotonAlmacen.tag = "flechaAzul"
 
 End
 
@@ -633,7 +637,7 @@ Public Function comprobarIdTexto(t As Textbox)
 
 End
 
-Public Sub almacen_Click()
+Public Sub BotonAlmacen_Click()
 
     Dim hfile As File
     Dim sline As String
@@ -652,8 +656,8 @@ Public Sub almacen_Click()
         contenidoPaso.add(TextAreaBalance.Text)
         FormTraspaso.contenido = contenidoPaso
         FormTraspaso.Show()
-        almacen.Picture = Picture["flechaazul32x32.png"]
-        almacen.tag = "flechaAzul"
+        BotonAlmacen.Picture = Picture["flechaazul16x16.png"]
+        BotonAlmacen.tag = "flechaAzul"
     Else
         Message.Info("No hay contido a almacenar")
     Endif
@@ -684,5 +688,27 @@ End
 Public Sub ButtonEditor_Click()
 
     Exec ["featherpad", User.home & "/informacion.csv"]
+
+End
+
+Public Sub Form_KeyPress()
+
+    Print Key.code
+
+    If Key.code = 86 Then
+        'si pulsa boton key.code=86 then pegar datos del portapapele "techa v"
+        ButtonPegar_Click()
+    Endif
+
+    If Key.code = 65 Then
+        'almacenar informacion tecla a
+
+        BotonAlmacen_Click()
+    Endif
+
+    If Key.code = 67 Then
+        'limpia contenido
+        ButtonLimpiarInicio_Click()
+    Endif
 
 End
