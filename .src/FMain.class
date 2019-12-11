@@ -45,7 +45,7 @@ Public Sub CalcularPegado()
         Dim existeId As Integer = InStr(Upper(TextBoxComentarioApuesta.text), Upper("ID:"))
         If existeID <> 0 Then
             TextBoxId.text = LTrim(RTrim(Mid$(TextBoxComentarioApuesta.text, existeId + 3, Len(TextBoxComentarioApuesta.text))))
-            TextBoxComentarioApuesta.text = Mid$(TextBoxComentarioApuesta.text, 1, existeId - 1) & " [Guardado:" & Format(Now, "dd/mm/yy_hh:mm") & "] " & Mid$(TextBoxComentarioApuesta.text, existeId, Len(TextBoxComentarioApuesta.text))
+            TextBoxComentarioApuesta.text = Mid$(TextBoxComentarioApuesta.text, 1, existeId - 1) & " [Guardado:" & Format(Now, "dd/mm/yy_hh:nn") & "] " & Mid$(TextBoxComentarioApuesta.text, existeId, Len(TextBoxComentarioApuesta.text))
         Endif
 
         'comprobacion de fecha: dentro de comentario "fecha:" , fecha como "dd/mm"
@@ -702,8 +702,11 @@ Public Sub Form_KeyPress()
 
     If Key.code = 65 Then
         'almacenar informacion tecla a
-
-        BotonAlmacen_Click()
+        If traduccionErronea = True Then
+            Message.Info("No se puede traducir, hay un error")
+        Else
+            BotonAlmacen_Click()
+        Endif
     Endif
 
     If Key.code = 67 Then

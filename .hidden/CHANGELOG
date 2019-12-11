@@ -1,3 +1,6 @@
+* Wed Dec 11 2019 jsbsan <jusabejusabe@gmail.com> 0.0.47
+- corrijo bug de poner minutos y no guarda cuando hay un error en la traduccion
+
 * Mon Dec 09 2019 jsbsan <jusabejusabe@gmail.com> 0.0.46
 - teclas rapidas v pegar c limpiar a almacenar incluyo fecha de guardado de la traduccion
 
