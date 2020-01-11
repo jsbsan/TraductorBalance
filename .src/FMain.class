@@ -715,3 +715,9 @@ Public Sub Form_KeyPress()
     Endif
 
 End
+
+Public Sub ButtonVerhoy_Click()
+
+    FormHoy.Show()
+
+End

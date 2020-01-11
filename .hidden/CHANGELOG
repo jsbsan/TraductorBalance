@@ -1,3 +1,6 @@
+* Sat Jan 11 2020 jsbsan <jusabejusabe@gmail.com> 0.0.48
+- muestras las que se han guardado hoy
+
 * Wed Dec 11 2019 jsbsan <jusabejusabe@gmail.com> 0.0.47
 - corrijo bug de poner minutos y no guarda cuando hay un error en la traduccion
 
