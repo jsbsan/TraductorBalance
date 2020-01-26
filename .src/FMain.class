@@ -679,9 +679,9 @@ Public Sub cantidades_MouseDown()
 
 End
 
-Public Sub Label13_MouseDown()
+Public Sub LabelAjuste_MouseDown()
 
-    TextBoxComentarioTransferencia.text &= Label13.Tag
+    TextBoxComentarioTransferencia.text &= LabelAjuste.Tag
 
 End
 
@@ -719,5 +719,17 @@ End
 Public Sub ButtonVerhoy_Click()
 
     FormHoy.Show()
+
+End
+
+Public Sub LabelSlot_MouseDown()
+
+    TextBoxComentarioTransferencia.text &= LabelSlot.Tag
+
+End
+
+Public Sub LabelSemana_MouseDown()
+
+    TextBoxComentarioTransferencia.text &= LabelSemana.Tag
 
 End

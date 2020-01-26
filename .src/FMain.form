@@ -271,12 +271,29 @@
       Alignment = Align.Center
       Border = Border.Plain
     }
-    { Label13 Label
+    { LabelAjuste Label
       MoveScaled(69,18,11,4)
       Tag = "ajuste"
       ToolTip = ("añade la palabra ajuste al comentario")
       Text = ("+ \"ajuste\"")
       Alignment = Align.Center
+      Border = Border.Raised
+    }
+    { LabelSlot Label
+      MoveScaled(81,18,11,4)
+      Tag = "slot "
+      ToolTip = ("añade la palabra ajuste al comentario")
+      Text = ("+ \"slot\"")
+      Alignment = Align.Center
+      Border = Border.Raised
+    }
+    { LabelSemana Label
+      MoveScaled(93,18,11,4)
+      Tag = "semana del __ al __"
+      ToolTip = ("añade la palabra ajuste al comentario")
+      Text = ("+ \"semana \"")
+      Alignment = Align.Center
+      Border = Border.Raised
     }
     Index = 0
   }
