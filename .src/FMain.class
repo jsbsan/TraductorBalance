@@ -5,6 +5,7 @@ Public listaApuesta As New DatoApuesta[]
 Public Dtmp As New DatoApuesta
 Public datoBeneficio As Float
 Public traduccionErronea As Boolean = False
+Public tabActual As String
 
 Public Sub CalcularPegado()
     'calculo principal
@@ -693,25 +694,26 @@ End
 
 Public Sub Form_KeyPress()
 
-    Print Key.code
-
-    If Key.code = 86 Then
-        'si pulsa boton key.code=86 then pegar datos del portapapele "techa v"
-        ButtonPegar_Click()
-    Endif
-
-    If Key.code = 65 Then
-        'almacenar informacion tecla a
-        If traduccionErronea = True Then
-            Message.Info("No se puede traducir, hay un error")
-        Else
-            BotonAlmacen_Click()
+    ' Print Key.code
+    If tabActual = "Apuesta" Then
+        If Key.code = 86 Then
+            'si pulsa boton key.code=86 then pegar datos del portapapele "techa v"
+            ButtonPegar_Click()
         Endif
-    Endif
 
-    If Key.code = 67 Then
-        'limpia contenido
-        ButtonLimpiarInicio_Click()
+        If Key.code = 65 Then
+            'almacenar informacion tecla a
+            If traduccionErronea = True Then
+                Message.Info("No se puede traducir, hay un error")
+            Else
+                BotonAlmacen_Click()
+            Endif
+        Endif
+
+        If Key.code = 67 Then
+            'limpia contenido
+            ButtonLimpiarInicio_Click()
+        Endif
     Endif
 
 End
@@ -731,5 +733,16 @@ End
 Public Sub LabelSemana_MouseDown()
 
     TextBoxComentarioTransferencia.text &= LabelSemana.Tag
+
+End
+
+Public Sub TabStrip1_Arrange()
+
+    Print TabStrip1.Current.Text
+    If TabStrip1.Current.Text = "Apuesta" Then
+        tabActual = "Apuesta"
+    Else
+        tabActual = "Otra Tab"
+    Endif
 
 End
