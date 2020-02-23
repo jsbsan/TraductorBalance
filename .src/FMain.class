@@ -741,8 +741,14 @@ Public Sub TabStrip1_Arrange()
     Print TabStrip1.Current.Text
     If TabStrip1.Current.Text = "Apuesta" Then
         tabActual = "Apuesta"
+        PictureBoxImagen.visible = True
     Else
         tabActual = "Otra Tab"
+    Endif
+
+    If TabStrip1.Current.Text = "Transferencia" Then
+        'oculta imagen
+        PictureBoxImagen.visible = False
     Endif
 
 End
