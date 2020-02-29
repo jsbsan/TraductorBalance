@@ -48,9 +48,14 @@ Public Function similar(casa As String) As String
         Return "ERROR_CASA"
         Return ""
     Endif
+    If contiene(casa, "wa") Then Return "betway"
+    If contiene(casa, "way") Then Return "betway"
+    If contiene(casa, "betway") Then Return "betway"
+    If contiene(casa, "betw") Then Return "betway"
 
     If contiene(casa, "pas") Then Return "paston"
     If contiene(casa, "paston") Then Return "paston"
+    If contiene(casa, "tón") Then Return "paston"
     If Len(casa) = 1 And casa = "p" Then Return "paston" '
 
     If contiene(casa, "f") Then Return "paf"
@@ -60,6 +65,7 @@ Public Function similar(casa As String) As String
 
     If contiene(casa, "ci") Then Return "circus"
     If contiene(casa, "cu") Then Return "circus"
+    If contiene(casa, "circu") Then Return "circus"
 
     If contiene(casa, "go") Then Return "goldenpark"
 
