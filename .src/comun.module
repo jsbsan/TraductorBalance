@@ -48,7 +48,7 @@ Public Function similar(casa As String) As String
         Return "ERROR_CASA"
         Return ""
     Endif
-    If contiene(casa, "wa") Then Return "betway"
+
     If contiene(casa, "way") Then Return "betway"
     If contiene(casa, "betway") Then Return "betway"
     If contiene(casa, "betw") Then Return "betway"
@@ -80,7 +80,7 @@ Public Function similar(casa As String) As String
     If contiene(casa, "w.c") Then Return "williamhill"
     If contiene(casa, "wc") Then Return "williamhill"
 
-    If contiene(casa, "wa") Then Return "wanabet"
+    If contiene(casa, "wan") Then Return "wanabet"
 
     If contiene(casa, "lu") Then Return "luckia"
     If contiene(casa, "ck") Then Return "luckia"
