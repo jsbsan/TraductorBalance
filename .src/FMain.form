@@ -295,6 +295,14 @@
       Alignment = Align.Center
       Border = Border.Raised
     }
+    { ButtonComboboxGraficoDesde Button
+      MoveScaled(38,3,4,4)
+      Text = ("CBG")
+    }
+    { ButtonComboboxGraficoA Button
+      MoveScaled(76,3,4,4)
+      Text = ("CBG")
+    }
     Index = 0
   }
   { TextAreaBalance TextArea
