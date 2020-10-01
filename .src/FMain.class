@@ -133,10 +133,10 @@ Public Sub ButtonPegar_Click()
     'activo boton secundario para pegar contenido original
 
     TextBoxComentarioApuesta.text = ""
-    ButtonPegar2.tag = Clipboard.Paste()
+    ButtonPegar2.tag = Clipboard.Paste("text/plain")
     ButtonPegar2.enabled = True
 
-    TextAreaApuesta.text = Clipboard.Paste()
+    TextAreaApuesta.text = Clipboard.Paste("text/plain")
 
     'si contiene el signo ← se trata de una apuesta resuelta
     traduccionErronea = False 'reinicio la traducción
