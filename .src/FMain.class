@@ -489,6 +489,7 @@ Public Sub Form_Open()
 
     ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
     ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
+    Settings.Read(Me)
 
 End
 
@@ -764,5 +765,11 @@ Public Sub ButtonComboboxGraficoA_Click()
 
     FormComboBoxGrafico.lista = ComboBoxA.list
     FormComboBoxGrafico.abrir(ComboBoxA)
+
+End
+
+Public Sub Form_Close()
+
+    Settings.write(Me)
 
 End
