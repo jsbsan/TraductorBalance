@@ -110,7 +110,7 @@ Public Sub CalcularPegado()
         ButtonCopiaralPortapapeles_Click()
         BotonAlmacen.Picture = Picture["flechaRojo16x16.png"]
         BotonAlmacen.tag = "flechaRojo"
-        LabelComentarios.Background = Color.white
+        LabelComentarios.Background = Color.Background
         LabelComentarios.text = "Comentario: OK, traducción realizada"
     Endif
 
@@ -164,7 +164,7 @@ Public Sub procesar(texto As String)
 
     If palabras.count = 7 Or palabras.count = 6 Then
         LabelComentarios.text = "Comentarios sobre traducción..."
-        LabelComentarios.Background = Color.White
+        LabelComentarios.Background = Color.Background
 
     Else
 
@@ -300,7 +300,7 @@ Public Sub ButtonTraducir_Click()
 
     If TextBoxComentarioApuesta.text <> "" Then
         TextAreaBalance.text = "Comentario: " & TextBoxComentarioApuesta.text & "\n"
-        LabelComentarios.Background = Color.white
+        LabelComentarios.Background = Color.Background
     Endif
 
     If TextBoxId.text = "" Then
@@ -485,7 +485,7 @@ Public Sub Form_Open()
     Me.Title = "Traductor a Balance vesion " & Application.Version
 
     LabelComentarios.text = "Comentarios sobre traducción..."
-    LabelComentarios.Background = Color.White
+    LabelComentarios.Background = Color.Background
 
     ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
     ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])
@@ -559,7 +559,7 @@ Public Sub ButtonLimpiarInicio_Click()
     DateBoxFechaHora.value = Date(0, 0, 0)
 
     LabelComentarios.text = "Comentarios sobre traducción..."
-    LabelComentarios.Background = Color.White
+    LabelComentarios.Background = Color.Background
 
     ButtonDecenaMillar.Text = IIf(settings["decenamillar"] = "", "0", settings["decenamillar"])
     ButtonUnidadMillar.Text = IIf(settings["unidadmillar"] = "", "0", settings["decenamillar"])

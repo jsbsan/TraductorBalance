@@ -2,7 +2,6 @@
 
 { Form Form
   MoveScaled(0,0,110,98)
-  Background = &H77C0AD&
   ToolTip = ("Fichero de Trabajo:  User.home & \"/informacion.csv\"")
   Text = ("Traductor a Balance")
   Icon = Picture["balanza2.png"]
@@ -33,7 +32,6 @@
     }
     { TextAreaApuesta TextArea
       MoveScaled(1,15,105,15)
-      Background = &HBFBFBF&
       ReadOnly = True
       Wrap = True
     }
