@@ -36,12 +36,12 @@
       Wrap = True
     }
     { ButtonTraducir Button
-      MoveScaled(93,34,12,5)
+      MoveScaled(94,32,12,5)
       Text = ("Traducir")
       Picture = Picture["icon:/16/exec"]
     }
     { Frame2 Frame
-      MoveScaled(29,31,32,7)
+      MoveScaled(30,30,32,7)
       Enabled = False
       Font = Font["-2"]
       Text = ("Estado")
@@ -58,8 +58,8 @@
     { Label1 Label
       MoveScaled(1,11,80,4)
       Font = Font["+1"]
-      Text = ("Casa | Mercado | Cantidad | cuota | premio | beneficio | resultado\n")
       Alignment = Align.TopNormal
+      Text = ("Casa | Mercado | Cantidad | cuota | premio | beneficio | resultado\n")
     }
     { PanelIdApuesta Panel
       MoveScaled(2,4,35,7)
@@ -120,7 +120,7 @@
       Picture = Picture["icon:/16/paste"]
     }
     { Frame1 Frame
-      MoveScaled(6,31,14,7)
+      MoveScaled(7,30,19,7)
       Enabled = False
       Font = Font["-2"]
       Text = ("Tipo")
@@ -129,7 +129,7 @@
         Text = ("Freebet")
       }
       { RadioButtonNormal RadioButton
-        MoveScaled(5,0,10,3)
+        MoveScaled(5,1,10,3)
         Text = ("Normal")
         Value = True
       }
@@ -209,89 +209,89 @@
     }
     { Label5 Label
       MoveScaled(0,25,8,5)
-      Text = ("suma:")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("suma:")
     }
     { Label6 Label cantidades
       Name = "Label6"
       MoveScaled(9,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("1")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("1")
     }
     { Label7 Label cantidades
       Name = "Label7"
       MoveScaled(18,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("5")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("5")
     }
     { Label8 Label cantidades
       Name = "Label8"
       MoveScaled(27,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("10")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("10")
     }
     { Label9 Label cantidades
       Name = "Label9"
       MoveScaled(37,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("15")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("15")
     }
     { Label10 Label cantidades
       Name = "Label10"
       MoveScaled(46,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("20")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("20")
     }
     { Label11 Label cantidades
       Name = "Label11"
       MoveScaled(55,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("25")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("25")
     }
     { Label12 Label cantidades
       Name = "Label12"
       MoveScaled(64,25,7,5)
       ToolTip = ("haga click para sumar a la cantidad")
-      Text = ("50")
       Alignment = Align.Center
       Border = Border.Plain
+      Text = ("50")
     }
     { LabelAjuste Label
       MoveScaled(69,18,11,4)
       Tag = "ajuste"
       ToolTip = ("añade la palabra ajuste al comentario")
-      Text = ("+ \"ajuste\"")
       Alignment = Align.Center
       Border = Border.Raised
+      Text = ("+ \"ajuste\"")
     }
     { LabelSlot Label
       MoveScaled(81,18,11,4)
       Tag = "slot "
       ToolTip = ("añade la palabra ajuste al comentario")
-      Text = ("+ \"slot\"")
       Alignment = Align.Center
       Border = Border.Raised
+      Text = ("+ \"slot\"")
     }
     { LabelSemana Label
       MoveScaled(93,18,11,4)
       Tag = "semana del __ al __"
       ToolTip = ("añade la palabra ajuste al comentario")
-      Text = ("+ \"semana \"")
       Alignment = Align.Center
       Border = Border.Raised
+      Text = ("+ \"semana \"")
     }
     { ButtonComboboxGraficoDesde Button
       MoveScaled(38,3,4,4)

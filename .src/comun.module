@@ -49,6 +49,14 @@ Public Function similar(casa As String) As String
         Return ""
     Endif
 
+If contiene(casa, "fai") Then Return "betfair"
+
+    If contiene(casa, "77") Then Return "777"
+    If contiene(casa, "leo") Then Return "leovegas"
+    If contiene(casa, "ovega") Then Return "leovegas"
+    If contiene(casa, "starve") Then Return "starvegas"
+    If contiene(casa, "arvega") Then Return "starvegas"
+
     If contiene(casa, "mondo") Then Return "mondobets"
     If contiene(casa, "mon") Then Return "mondobets"
     If contiene(casa, "mondobet") Then Return "mondobets"
@@ -106,8 +114,10 @@ Public Function similar(casa As String) As String
     If contiene(casa, "6") Then Return "bet365"
     If contiene(casa, "5") Then Return "bet365"
 
-    If contiene(casa, "8") Then Return "888sport"
+    If contiene(casa, "88") Then Return "888sport"
+    If contiene(casa, "8s") Then Return "888sport"
 
+    If contiene(casa, "betsta") Then Return "betstars"
     If contiene(casa, "st") Then Return "betstars"
     If contiene(casa, "tar") Then Return "betstars"
     If contiene(casa, "poke") Then Return "betstars"
