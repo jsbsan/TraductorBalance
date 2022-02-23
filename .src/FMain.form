@@ -25,7 +25,7 @@
     Text = ("Apuesta")
     Picture = Picture["apu48.png"]
     { ButtonPegar Button
-      MoveScaled(82,5,5,6)
+      MoveScaled(81,5,5,6)
       ToolTip = ("pegar contenido, traducirlo y copiarlo")
       Text = Shortcut(("v"), "v")
       Picture = Picture["icon:/16/paste"]
@@ -108,12 +108,12 @@
       Text = ("Nota: en la columna de resultado el signo ← indica que apuesta gano.")
     }
     { ButtonLimpiarInicio Button
-      MoveScaled(99,5,6,6)
+      MoveScaled(101,5,6,6)
       Text = Shortcut(("c"), "c")
       Picture = Picture["icon:/16/clear"]
     }
     { ButtonPegar2 Button
-      MoveScaled(91,5,5,6)
+      MoveScaled(95,5,5,6)
       Enabled = False
       ToolTip = ("pega el contenido original antes de traduccion")
       Text = ("2")
@@ -308,13 +308,6 @@
     Font = Font["-1"]
     ReadOnly = True
   }
-  { BotonAlmacen Button
-    MoveScaled(102,66,7,7)
-    Tag = "flechaAzul"
-    ToolTip = ("Almacén")
-    Text = Shortcut(("a"), "a")
-    Picture = Picture["flechaazul16x16.png"]
-  }
   { PictureBoxImagen PictureBox
     MoveScaled(2,75,105,18)
     Border = Border.Plain
@@ -330,5 +323,12 @@
     MoveScaled(58,1,22,4)
     Text = ("Ver Guardadas Hoy")
     Picture = Picture["icon:/22/user"]
+  }
+  { BotonAlmacen Button
+    MoveScaled(88,10,7,6)
+    Tag = "flechaAzul"
+    ToolTip = ("Almacén")
+    Text = Shortcut(("a"), "a")
+    Picture = Picture["flechaazul16x16.png"]
   }
 }

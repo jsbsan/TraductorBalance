@@ -1,3 +1,11 @@
+* Wed Feb 23 2022 jsbsan <jusabejusabe@gmail.com> 0.0.63
+- si el boton esta en modo flechaAzul, no se traspasa informacion al almacen.
+
+* Wed Feb 16 2022 jsbsan <jusabejusabe@gmail.com> 0.0.62
+
+* Wed Feb 16 2022 jsbsan <jusabejusabe@gmail.com> 0.0.62
+- cambio de sitio boton
+
 * Thu May 13 2021 jsbsan <jusabejusabe@gmail.com> 0.0.62
 - betfair
 

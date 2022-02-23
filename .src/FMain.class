@@ -644,6 +644,12 @@ Public Sub BotonAlmacen_Click()
     Dim hfile As File
     Dim sline As String
 
+    If BotonAlmacen.tag = "flechaAzul" Then
+        'ya ha pasado informacion al almacen
+        Message.Info("La información ya esta pasada al almacen")
+        Return
+    Endif
+
     If TextAreaBalance.Text <> "" Then
         Dim nombrefichero As String = User.home & "/informacion.csv"
 
